@@ -7,10 +7,12 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     [SerializeField] private Player player;
+    [SerializeField] private DungeonManager dungeonManager;
     private Enemy enemy;
 
     private int currentTurn = 1;
     private bool waitingForPlayerCoinEffect;
+    private bool isBattleEnded;
 
     public int CurrentTurn => currentTurn;
     public bool IsWaitingForPlayerCoinEffect => waitingForPlayerCoinEffect;
@@ -24,12 +26,13 @@ public class BattleManager : MonoBehaviour
     {
         currentTurn = 1;
         waitingForPlayerCoinEffect = false;
+        isBattleEnded = false;
         ProcessTurn();
     }
 
     public bool ExecutePlayerCoinEffect(int coinIndex)
     {
-        if (!waitingForPlayerCoinEffect || player == null || enemy == null)
+        if (isBattleEnded || !waitingForPlayerCoinEffect || player == null || enemy == null)
         {
             return false;
         }
@@ -47,6 +50,12 @@ public class BattleManager : MonoBehaviour
         }
 
         coin.Effect(enemy);
+
+        if (CheckBattleOutcome())
+        {
+            return true;
+        }
+
         waitingForPlayerCoinEffect = false;
         currentTurn++;
         ProcessTurn();
@@ -55,7 +64,7 @@ public class BattleManager : MonoBehaviour
 
     private void ProcessTurn()
     {
-        if (player == null || enemy == null)
+        if (isBattleEnded || player == null || enemy == null)
         {
             return;
         }
@@ -69,8 +78,40 @@ public class BattleManager : MonoBehaviour
         waitingForPlayerCoinEffect = false;
         enemy.Act(player);
 
+        if (CheckBattleOutcome())
+        {
+            return;
+        }
+
         currentTurn++;
         ProcessTurn();
+    }
+
+    private bool CheckBattleOutcome()
+    {
+        if (enemy != null && enemy.IsDead)
+        {
+            isBattleEnded = true;
+            waitingForPlayerCoinEffect = false;
+            dungeonManager?.OnBattleWon();
+            return true;
+        }
+
+        if (player != null && player.IsDead)
+        {
+            isBattleEnded = true;
+            waitingForPlayerCoinEffect = false;
+            EndGame();
+            return true;
+        }
+
+        return false;
+    }
+
+    private void EndGame()
+    {
+        Time.timeScale = 0f;
+        Debug.Log("Game Over");
     }
 
 }

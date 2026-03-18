@@ -11,6 +11,12 @@ public class Player : Character
 
     private void Awake()
     {
-        maxLife = maxLife_Serialize;
+        MaxLife = maxLife_Serialize;
+    }
+
+    public void RecoverLifeOnBattleWin()
+    {
+        int recoverAmount = Mathf.Max(1, Mathf.RoundToInt(maxLife * 0.2f));
+        Heal(recoverAmount);
     }
 }

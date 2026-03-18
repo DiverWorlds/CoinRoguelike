@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 abstract public class Character : MonoBehaviour
 {
@@ -8,10 +7,27 @@ abstract public class Character : MonoBehaviour
     private int currentLife;
     private int sleepCounter = 0;
 
+    public int CurrentLife => currentLife;
+    public bool IsDead => currentLife <= 0;
+
     protected int MaxLife
     {
         get => maxLife;
-        set => maxLife = value;
+        set
+        {
+            maxLife = Mathf.Max(1, value);
+            currentLife = maxLife;
+        }
+    }
+
+    protected void Heal(int amount)
+    {
+        if (amount <= 0)
+        {
+            return;
+        }
+
+        currentLife = Mathf.Min(currentLife + amount, maxLife);
     }
 
 

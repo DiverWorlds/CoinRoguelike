@@ -1,5 +1,4 @@
-//TODO: ステージ数の管理を行う役割
-//TODO: BattleManagerへ適切な敵を渡す役割
+//TODO: DungeonManager, BattleManagerのリファクタ
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,6 +11,7 @@ public class DungeonManager : MonoBehaviour
         public Enemy enemyPrefab;
     }
 	[SerializeField] private BattleManager battleManager;
+	[SerializeField] private Player player;
 	[SerializeField] private List<enemyPrefabData> stageEnemyPrefabs = new List<enemyPrefabData>();
 	[SerializeField] private int currentStage = 1;
 
@@ -28,6 +28,12 @@ public class DungeonManager : MonoBehaviour
 		currentStage++;
 		StartCurrentStageBattle();
 		return true;
+	}
+
+	public void OnBattleWon()
+	{
+		player?.RecoverLifeOnBattleWin();
+		StartNextStage();
 	}
 
 	private void StartCurrentStageBattle()
