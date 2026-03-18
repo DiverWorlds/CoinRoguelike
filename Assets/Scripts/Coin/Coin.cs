@@ -12,18 +12,22 @@ public class Coin : MonoBehaviour
     public int FrontSideValue => frontSideValue;
     public int BackSideValue => backSideValue;
 
-    public void Initialize(BaseSide frontSide, BaseSide backSide)
+    public void SetSides(BaseSide frontSide, BaseSide backSide)
     {
         this.frontSide = frontSide;
         this.backSide = backSide;
-        frontSideProbability = CalcFrontSideProbability();
-        frontSideValue = CalcFrontSideValue();
-        backSideValue = CalcBackSideValue();
+    }
+
+    public void Initialize(float frontSideProbability, int frontSideValue, int backSideValue)
+    {
+        this.frontSideProbability = frontSideProbability;
+        this.frontSideValue = frontSideValue;
+        this.backSideValue = backSideValue;
     }
 
     public void Effect(Character target)
     {
-        if (FrontSideProbability <= Random.value)
+        if (Random.value <= FrontSideProbability)
         {
             frontSide.Effect(FrontSideValue, target);
         }
@@ -31,20 +35,5 @@ public class Coin : MonoBehaviour
         {
             backSide.Effect(BackSideValue, target);
         }
-    }
-    private float CalcFrontSideProbability()
-    {
-        //TODO: ちゃんと作る
-        return 0.5f;
-    }
-    private int CalcFrontSideValue()
-    {
-        //TODO: ちゃんと作る
-        return frontSide.Strength;
-    }
-    private int CalcBackSideValue()
-    {
-        //TODO: ちゃんと作る
-        return backSide.Strength;
     }
 }
