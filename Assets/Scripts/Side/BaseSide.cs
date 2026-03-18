@@ -11,6 +11,13 @@ abstract public class BaseSide : MonoBehaviour
     [SerializeField] protected int maxWeight;
     protected Rank rank;
 
+    public FrontAndBack FrontOrBack => frontOrBack;
+    public int Strength => strength;
+    public int Weight => weight;
+    public Rank Rank => rank;
+
+    
+
     void Start()
     {
     }
