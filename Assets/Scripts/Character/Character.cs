@@ -4,14 +4,16 @@ using UnityEngine.TextCore.Text;
 abstract public class Character : MonoBehaviour
 {
     //TODO: 死をBattleManagerに通知する
-    [SerializeField] private int maxLife;
+    protected int maxLife;
     private int currentLife;
     private int sleepCounter = 0;
 
-    void Start()
+    protected int MaxLife
     {
-        currentLife = maxLife;
+        get => maxLife;
+        set => maxLife = value;
     }
+
 
     public void TakeDamage(int damage)
     {
