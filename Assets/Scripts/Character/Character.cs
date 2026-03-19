@@ -9,7 +9,7 @@ abstract public class Character : MonoBehaviour
     public int CurrentLife => currentLife;
     public bool IsDead => currentLife <= 0;
 
-    protected int MaxLife
+    public int MaxLife
     {
         get => maxLife;
         set

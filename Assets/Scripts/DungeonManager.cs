@@ -10,8 +10,8 @@ public class DungeonManager : MonoBehaviour
 	[SerializeField] private PlayerMovement playerMovement;
 	[SerializeField] private Player player;
     [SerializeField] private SideInventory sidesInventory;
-	[SerializeField] private int currentStage = 1;
     [SerializeField] private CallEnemiesManager callEnemiesManager;
+	private int currentStage = 1;
     private Enemy enemy;
 	public int CurrentStage => currentStage;
 	public bool IsPlayerMoving => playerMovement != null && playerMovement.IsPlayerMoving;
@@ -32,7 +32,7 @@ public class DungeonManager : MonoBehaviour
         Logger.Log("OnBattleWon called");
 		player.RecoverLife();
         Logger.Log("sidesInventory", sidesInventory);
-        Logger.Log("sidesServer", sidesServer);
+		Logger.Log("sidesServer", sidesServer);
         sidesInventory.Add(sidesServer.GetRandomSide());
 		StartNextStage();
 	}
