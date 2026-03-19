@@ -4,6 +4,9 @@ using UnityEngine;
 abstract public class Enemy : Character
 {
     [SerializeField] protected int power;
+    [SerializeField] protected float enemyOffset = 3f;
+
+    public float EnemyOffset => enemyOffset;
 
     public void Initialize(int maxLife, int power)
     {

@@ -4,19 +4,34 @@ public class CoinFactory : MonoBehaviour
 {
 	[SerializeField] private Coin coinPrefab;
     [SerializeField] private SideInventory sideInventory;
+	[SerializeField] private CoinInventory coinInventory;
+    [SerializeField] private Transform coin1Slot;
+    [SerializeField] private Transform coin2Slot;
+    [SerializeField] private Transform coin3Slot;
 
 	public Coin CreateCoin(BaseSide frontSide, BaseSide backSide)
 	{
-		if (coinPrefab == null)
+		if (coinPrefab == null || coinInventory == null)
 		{
 			return null;
 		}
 
-		Coin coinInstance = Instantiate(coinPrefab);
+		int targetIndex = coinInventory.CoinCount;
+		Transform parentSlot = GetSlotByIndex(targetIndex);
+
+		Coin coinInstance = parentSlot != null
+			? Instantiate(coinPrefab, parentSlot)
+			: Instantiate(coinPrefab);
         if (coinInstance == null)
         {
             return null;
         }
+
+		if (!coinInventory.Add(coinInstance))
+		{
+			Destroy(coinInstance.gameObject);
+			return null;
+		}
 
         sideInventory.Remove(frontSide);
         sideInventory.Remove(backSide);
@@ -27,7 +42,29 @@ public class CoinFactory : MonoBehaviour
 
 		coinInstance.SetSides(frontSide, backSide);
 		coinInstance.Initialize(frontSideProbability, frontSideValue, backSideValue);
+
+		if (parentSlot != null)
+		{
+			coinInstance.transform.localPosition = Vector3.zero;
+			coinInstance.transform.localRotation = Quaternion.identity;
+		}
+
 		return coinInstance;
+	}
+
+	private Transform GetSlotByIndex(int index)
+	{
+		switch (index)
+		{
+			case 0:
+				return coin1Slot;
+			case 1:
+				return coin2Slot;
+			case 2:
+				return coin3Slot;
+			default:
+				return null;
+		}
 	}
 
 	private float CalcFrontSideProbability(BaseSide frontSide, BaseSide backSide)
