@@ -29,7 +29,10 @@ public class DungeonManager : MonoBehaviour
     
     public void OnBattleWon()
 	{
-		player?.RecoverLife();
+        Logger.Log("OnBattleWon called");
+		player.RecoverLife();
+        Logger.Log("sidesInventory", sidesInventory);
+        Logger.Log("sidesServer", sidesServer);
         sidesInventory.Add(sidesServer.GetRandomSide());
 		StartNextStage();
 	}

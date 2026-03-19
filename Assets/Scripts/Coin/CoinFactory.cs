@@ -46,7 +46,6 @@ public class CoinFactory : MonoBehaviour
 
 	private Transform GetSlotByIndex(int index)
 	{
-        Debug.Log($"Getting slot for index: {index}");
 		switch (index)
 		{
 			case 0:
