@@ -6,15 +6,14 @@ public class InitialCoinsServer : MonoBehaviour
     [SerializeField] private SidesGacha sidesGacha;
     [SerializeField] private Coin coinPrefab;
     [SerializeField] private CoinInventory coinInventory;
-    [SerializeField] private CoinFactory coinFactory;
-
+    [SerializeField] private List<Transform> coinSlots;
     void Start()
     {
         List<BaseSide> sides = sidesGacha.GetSides();
         //TODO: 雑に作ってるので直す
         for (int i = 0; i < 3; i++)
         {
-            Coin newCoin = coinFactory.CreateCoin(sides[0], sides[1]);
+            Coin newCoin = Instantiate(coinPrefab, coinSlots[i]);
             newCoin.SetSides(sides[0], sides[1]);
             coinInventory.Add(newCoin);
         }

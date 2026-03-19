@@ -18,10 +18,13 @@ public class CoinFactory : MonoBehaviour
 
 		int targetIndex = coinInventory.CoinCount;
 		Transform parentSlot = GetSlotByIndex(targetIndex);
+		if (parentSlot == null)
+		{
+			Debug.LogWarning($"Coin slot is not assigned for index {targetIndex}. Coin creation was skipped.");
+			return null;
+		}
 
-		Coin coinInstance = parentSlot != null
-			? Instantiate(coinPrefab, parentSlot)
-			: Instantiate(coinPrefab);
+		Coin coinInstance = Instantiate(coinPrefab, parentSlot, false);
         if (coinInstance == null)
         {
             return null;
@@ -43,11 +46,8 @@ public class CoinFactory : MonoBehaviour
 		coinInstance.SetSides(frontSide, backSide);
 		coinInstance.Initialize(frontSideProbability, frontSideValue, backSideValue);
 
-		if (parentSlot != null)
-		{
-			coinInstance.transform.localPosition = Vector3.zero;
-			coinInstance.transform.localRotation = Quaternion.identity;
-		}
+		coinInstance.transform.localPosition = Vector3.zero;
+		coinInstance.transform.localRotation = Quaternion.identity;
 
 		return coinInstance;
 	}

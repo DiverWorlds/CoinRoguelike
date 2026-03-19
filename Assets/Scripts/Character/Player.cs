@@ -13,8 +13,8 @@ public class Player : Character
     {
         MaxLife = maxLife_Serialize;
     }
-
-    public void RecoverLifeOnBattleWin()
+    
+    public void RecoverLife()
     {
         int recoverAmount = Mathf.Max(1, Mathf.RoundToInt(maxLife * 0.2f));
         Heal(recoverAmount);
