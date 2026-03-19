@@ -11,13 +11,17 @@ public class CallEnemiesManager : MonoBehaviour
         public Enemy enemyPrefab;
     }
 	[SerializeField] private List<enemyPrefabData> enemyPrefabs = new List<enemyPrefabData>();
+    [SerializeField] private Transform player;
+    [SerializeField] private float enemyOffset = 8f;
+    [SerializeField] private float initialEnemyOffset = 2f;
 
     public Enemy InstantiateEnemyPrefab(int stage)
     {
         //TODO: ミミックしか出ないのでロジックを書く
         var enemyData = enemyPrefabs.Find(x => x.enemyName == Enemies.Mimic);
-
         Enemy enemy = Instantiate(enemyData.enemyPrefab);
+        Vector3 newPosition = player.position + new Vector3(0f, 0f, stage==1 ? initialEnemyOffset : enemyOffset);
+        enemy.transform.position = newPosition;
 
         enemy.Initialize(CalcMimicMaxLife(stage), CalcMimicPower(stage));
         return enemy;

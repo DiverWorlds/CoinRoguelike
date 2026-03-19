@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -15,8 +16,14 @@ public class PlayerMovement : MonoBehaviour
     private Transform playerTransform;
     private float targetZ;
     private float currentSpeed;
+    private Action onMovementComplete;
 
     public bool IsPlayerMoving { get; private set; }
+    public event Action OnMovementComplete
+    {
+        add { onMovementComplete += value; }
+        remove { onMovementComplete -= value; }
+    }
 
     void Start()
     {
@@ -66,11 +73,17 @@ public class PlayerMovement : MonoBehaviour
             playerTransform.position = snapPosition;
             currentSpeed = 0.0f;
             IsPlayerMoving = false;
+            
+            if (onMovementComplete != null)
+            {
+                Logger.Log("PlayerMovement: Movement complete, invoking onMovementComplete");
+                // onMovementComplete.Invoke();
+                // onMovementComplete = null; 
+            }
             return;
         }
 
         IsPlayerMoving = true;
-        Debug.Log($"PlayerMovement: UpdatePlayerMovement called. CurrentZ={playerTransform?.position.z}, TargetZ={targetZ}, CurrentSpeed={currentSpeed}");
 
 
         float direction = Mathf.Sign(distance);

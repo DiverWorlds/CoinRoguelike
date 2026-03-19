@@ -105,4 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mimic
   power: 15
-  enemyOffset: 3
+  enemyOffset: 2

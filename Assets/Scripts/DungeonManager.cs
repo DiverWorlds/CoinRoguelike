@@ -11,10 +11,16 @@ public class DungeonManager : MonoBehaviour
 	[SerializeField] private Player player;
     [SerializeField] private SideInventory sidesInventory;
     [SerializeField] private CallEnemiesManager callEnemiesManager;
+	[SerializeField] private float timeBetweenStages = 0.3f;
 	private int currentStage = 1;
     private Enemy enemy;
 	public int CurrentStage => currentStage;
 	public bool IsPlayerMoving => playerMovement != null && playerMovement.IsPlayerMoving;
+
+	void Start()
+	{
+		StartDungeon();
+	}
 
 	public void StartDungeon()
 	{
@@ -23,6 +29,7 @@ public class DungeonManager : MonoBehaviour
 	}
 	private void StartBattle(int stage)
 	{
+		
 		enemy = callEnemiesManager.InstantiateEnemyPrefab(stage);
 		battleManager.StartBattle(enemy);
 	}
@@ -31,10 +38,9 @@ public class DungeonManager : MonoBehaviour
 	{
         Logger.Log("OnBattleWon called");
 		player.RecoverLife();
-        Logger.Log("sidesInventory", sidesInventory);
-		Logger.Log("sidesServer", sidesServer);
+		Destroy(enemy.gameObject);
         sidesInventory.Add(sidesServer.GetRandomSide());
-		StartNextStage();
+		Invoke(nameof(StartNextStage), timeBetweenStages);
 	}
     private bool StartNextStage()
 	{
