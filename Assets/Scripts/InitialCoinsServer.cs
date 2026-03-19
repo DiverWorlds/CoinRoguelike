@@ -30,19 +30,10 @@ public class InitialCoinsServer : MonoBehaviour
             }
         }
 
-        
-
-                foreach (var side in sideInventory.GetComponentsInChildren<BaseSide>(true))
-                {
-                    Debug.Log($"sideInventory child BaseSide: {side.EffectName}");
-                }
-
         //TODO: 雑に作ってるので直す
         for (int i = 0; i < 3; i++)
         {
-            Coin newCoin = coinFactory.CreateCoin(sides[2*i], sides[2*i+1]);
-            coinInventory.Add(newCoin);
+            coinFactory.CreateCoin(sides[2*i], sides[2*i+1]);
         }
-        Debug.Log("InitialCoinsServer.Start() finished");
     }
 }

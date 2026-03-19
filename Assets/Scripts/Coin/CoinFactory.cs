@@ -11,13 +11,6 @@ public class CoinFactory : MonoBehaviour
 
     public Coin CreateCoin(BaseSide frontSide, BaseSide backSide)
     {
-        Debug.Log($"CoinFactory.CreateCoin() called: front={frontSide?.EffectName ?? "NULL"}, back={backSide?.EffectName ?? "NULL"}");
-        		if (coinPrefab == null || coinInventory == null)
-		{
-			Debug.Log("CoinFactory: coinPrefab or coinInventory is NULL");
-			return null;
-		}
-
 		int targetIndex = coinInventory.CoinCount;
 		Transform parentSlot = GetSlotByIndex(targetIndex);
 		if (parentSlot == null)
@@ -33,7 +26,6 @@ public class CoinFactory : MonoBehaviour
 		float frontSideProbability = CalcFrontSideProbability(frontSide, backSide);
 		int frontSideValue = CalcFrontSideValue(frontSide);
 		int backSideValue = CalcBackSideValue(backSide);
-        Debug.Log($"CoinFactory: Initializing coin with front={frontSideValue}, back={backSideValue}, prob={frontSideProbability}");
         
 		coinInstance.Initialize(frontSide, backSide, frontSideProbability, frontSideValue, backSideValue);
 
@@ -42,10 +34,6 @@ public class CoinFactory : MonoBehaviour
 
 		coinInstance.transform.localPosition = Vector3.zero;
 		coinInstance.transform.localRotation = Quaternion.identity;
-
-        
-
-        Debug.Log($"CoinFactory: Coin created successfully");
 
 		return coinInstance;
     }
@@ -58,6 +46,7 @@ public class CoinFactory : MonoBehaviour
 
 	private Transform GetSlotByIndex(int index)
 	{
+        Debug.Log($"Getting slot for index: {index}");
 		switch (index)
 		{
 			case 0:
