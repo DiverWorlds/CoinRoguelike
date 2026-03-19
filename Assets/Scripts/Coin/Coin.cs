@@ -16,11 +16,13 @@ public class Coin : MonoBehaviour
 
     public void Initialize(BaseSide frontSide, BaseSide backSide, float frontSideProbability, int frontSideValue, int backSideValue)
     {
+        Debug.Log($"Coin.Initialize() called: frontSide={frontSide?.EffectName ?? "NULL"}, backSide={backSide?.EffectName ?? "NULL"}");
         this.frontSide = frontSide;
         this.backSide = backSide;
         this.frontSideProbability = frontSideProbability;
         this.frontSideValue = frontSideValue;
         this.backSideValue = backSideValue;
+        Debug.Log($"Coin.Initialize() completed: FrontEffectName={FrontEffectName}, BackEffectName={BackEffectName}");
     }
 
     public void Effect(Character target)

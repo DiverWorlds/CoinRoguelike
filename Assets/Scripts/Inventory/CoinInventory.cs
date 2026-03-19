@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CoinInventory : MonoBehaviour
@@ -11,20 +12,9 @@ public class CoinInventory : MonoBehaviour
 
     public int CoinCount => coins.Count;
 
-    public bool Add(Coin coin)
+    public void Add(Coin coin)
     {
-        if (coin == null)
-        {
-            return false;
-        }
-
-        if (coins.Count >= MaxCoinCount)
-        {
-            return false;
-        }
-
         coins.Add(coin);
-        return true;
     }
 
     public bool Remove(Coin coin)
@@ -39,7 +29,10 @@ public class CoinInventory : MonoBehaviour
             return false;
         }
 
-        return coins.Remove(coin);
+        bool isRemoved = coins.Remove(coin);
+        Destroy(coin.gameObject);
+
+        return isRemoved;
     }
 
     public Coin GetCoin(int index)

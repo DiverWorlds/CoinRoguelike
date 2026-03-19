@@ -1685,7 +1685,7 @@ MonoBehaviour:
   battleManager: {fileID: 1817639045}
   playerMovement: {fileID: 868224624}
   player: {fileID: 868224623}
-  sidesInventory: {fileID: 0}
+  sidesInventory: {fileID: 336070861}
   currentStage: 1
   callEnemiesManager: {fileID: 1817639046}
 --- !u!64 &1817639039
@@ -90386,8 +90386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3a28bfe3f44452e97396a7fbc8f4f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InitialCoinsServer
-  sidesGacha: {fileID: 1309242924}
+  sidesServer: {fileID: 1309242924}
   coinPrefab: {fileID: 2508029112365716407, guid: b55250137d77f4abf8df2ccb30274c61, type: 3}
+  sideInventory: {fileID: 336070861}
   coinInventory: {fileID: 1860301690}
   coinSlots:
   - {fileID: 1793152063}

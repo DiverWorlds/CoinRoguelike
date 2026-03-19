@@ -11,8 +11,10 @@ public class CoinFactory : MonoBehaviour
 
     public Coin CreateCoin(BaseSide frontSide, BaseSide backSide)
     {
+        Debug.Log($"CoinFactory.CreateCoin() called: front={frontSide?.EffectName ?? "NULL"}, back={backSide?.EffectName ?? "NULL"}");
         		if (coinPrefab == null || coinInventory == null)
 		{
+			Debug.Log("CoinFactory: coinPrefab or coinInventory is NULL");
 			return null;
 		}
 
@@ -25,25 +27,25 @@ public class CoinFactory : MonoBehaviour
 		}
 
 		Coin coinInstance = Instantiate(coinPrefab, parentSlot, false);
-        if (coinInstance == null)
-        {
-            return null;
-        }
-
-		if (!coinInventory.Add(coinInstance))
-		{
-			Destroy(coinInstance.gameObject);
-			return null;
-		}
+        
+        coinInventory.Add(coinInstance);
 
 		float frontSideProbability = CalcFrontSideProbability(frontSide, backSide);
 		int frontSideValue = CalcFrontSideValue(frontSide);
 		int backSideValue = CalcBackSideValue(backSide);
+        Debug.Log($"CoinFactory: Initializing coin with front={frontSideValue}, back={backSideValue}, prob={frontSideProbability}");
         
 		coinInstance.Initialize(frontSide, backSide, frontSideProbability, frontSideValue, backSideValue);
 
+		frontSide.transform.SetParent(coinInstance.transform, false);
+		backSide.transform.SetParent(coinInstance.transform, false);
+
 		coinInstance.transform.localPosition = Vector3.zero;
 		coinInstance.transform.localRotation = Quaternion.identity;
+
+        
+
+        Debug.Log($"CoinFactory: Coin created successfully");
 
 		return coinInstance;
     }
