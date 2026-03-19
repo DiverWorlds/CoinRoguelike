@@ -10,12 +10,13 @@ abstract public class BaseSide : MonoBehaviour
     [SerializeField] protected int minWeight;
     [SerializeField] protected int maxWeight;
     protected Rank rank;
+    protected string effectName;
 
     public FrontAndBack FrontOrBack => frontOrBack;
     public int Strength => strength;
     public int Weight => weight;
     public Rank Rank => rank;
-
+    public string EffectName => effectName;
     
 
     void Start()

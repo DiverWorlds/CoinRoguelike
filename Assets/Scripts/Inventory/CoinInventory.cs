@@ -51,4 +51,14 @@ public class CoinInventory : MonoBehaviour
 
         return coins[index];
     }
+
+    public int IndexOf(Coin coin)
+    {
+        if (coin == null)
+        {
+            return -1;
+        }
+
+        return coins.IndexOf(coin);
+    }
 }

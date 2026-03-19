@@ -5,6 +5,7 @@ public class StaySide : BaseSide
     public override void Initialize()
     {
         frontOrBack = FrontAndBack.Back;
+        effectName = "ミス";
         base.Initialize();
     }
     public override void Effect(int value, Character target)

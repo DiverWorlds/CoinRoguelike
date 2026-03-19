@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
         public const float MaxPlayerSpeed = 6.0f;
     }
     [SerializeField] private Player player;
+    [SerializeField] private float stageMoveDistance = 3.0f;
     private Transform playerTransform;
     private float targetZ;
     private float currentSpeed;
@@ -38,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         UpdatePlayerMovement();
     }
 
-    public void Advance(float stageMoveDistance)
+    public void Advance()
     {
         Debug.Log($"PlayerMovement: Advance called with stageMoveDistance={stageMoveDistance}");
         if (playerTransform == null)

@@ -9,9 +9,9 @@ public class CoinFactory : MonoBehaviour
     [SerializeField] private Transform coin2Slot;
     [SerializeField] private Transform coin3Slot;
 
-	public Coin CreateCoin(BaseSide frontSide, BaseSide backSide)
-	{
-		if (coinPrefab == null || coinInventory == null)
+    public Coin CreateCoin(BaseSide frontSide, BaseSide backSide)
+    {
+        		if (coinPrefab == null || coinInventory == null)
 		{
 			return null;
 		}
@@ -36,20 +36,22 @@ public class CoinFactory : MonoBehaviour
 			return null;
 		}
 
-        sideInventory.Remove(frontSide);
-        sideInventory.Remove(backSide);
-
 		float frontSideProbability = CalcFrontSideProbability(frontSide, backSide);
 		int frontSideValue = CalcFrontSideValue(frontSide);
 		int backSideValue = CalcBackSideValue(backSide);
-
-		coinInstance.SetSides(frontSide, backSide);
-		coinInstance.Initialize(frontSideProbability, frontSideValue, backSideValue);
+        
+		coinInstance.Initialize(frontSide, backSide, frontSideProbability, frontSideValue, backSideValue);
 
 		coinInstance.transform.localPosition = Vector3.zero;
 		coinInstance.transform.localRotation = Quaternion.identity;
 
 		return coinInstance;
+    }
+	public Coin CombineSides(BaseSide frontSide, BaseSide backSide)
+	{
+        sideInventory.Remove(frontSide);
+        sideInventory.Remove(backSide);
+        return CreateCoin(frontSide, backSide);
 	}
 
 	private Transform GetSlotByIndex(int index)

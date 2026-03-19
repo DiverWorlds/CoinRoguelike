@@ -2,7 +2,6 @@ using UnityEngine;
 
 abstract public class Character : MonoBehaviour
 {
-    //TODO: 死をBattleManagerに通知する
     protected int maxLife;
     private int currentLife;
     private int sleepCounter = 0;

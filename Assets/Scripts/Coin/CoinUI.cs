@@ -4,28 +4,39 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Collider2D))]
 public class CoinUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-	public void OnPointerEnter(PointerEventData eventData)
+	private CoinDescriptionWindow coinDescriptionWindow;
+	private BattleManager battleManager;
+	private CoinInventory coinInventory;
+    private Coin coin;
+
+	private void Awake()
 	{
-		Debug.Log($"{name}: hover(pointer)");
+		coinDescriptionWindow = FindFirstObjectByType<CoinDescriptionWindow>();
+		battleManager = FindFirstObjectByType<BattleManager>();
+		Player player = FindFirstObjectByType<Player>();
+		coinInventory = player.CoinInventory;
+	}
+
+	void Start()
+    {
+        coin = GetComponent<Coin>();
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+	{
+        Debug.Log($"Coin; power: {coin.FrontSideValue}, probability: {coin.FrontSideProbability}");
+		coinDescriptionWindow.Set(coin.FrontEffectName, coin.BackEffectName, coin.FrontSideValue, coin.BackSideValue, coin.FrontSideProbability);
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
-		Debug.Log($"{name}: exit(pointer)");
+		coinDescriptionWindow.Hide();
 	}
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
-		Debug.Log($"{name}: click(pointer)");
+		int coinIndex = coinInventory.IndexOf(coin);
+		battleManager.ExecutePlayerCoinEffect(coinIndex);
 	}
 
-	private void OnMouseEnter()
-	{
-		Debug.Log($"{name}: hover(mouse)");
-	}
 
-	private void OnMouseDown()
-	{
-		Debug.Log($"{name}: click(mouse)");
-	}
 }

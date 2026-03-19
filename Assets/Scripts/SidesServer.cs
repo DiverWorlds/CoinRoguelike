@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SidesGacha : MonoBehaviour
+public class SidesServer : MonoBehaviour
 {
     [SerializeField] private List<BaseSide> sides;
 
