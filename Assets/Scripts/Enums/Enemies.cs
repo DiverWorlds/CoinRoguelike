@@ -1,4 +1,7 @@
 public enum Enemies
 {
-    Mimic
+    Mimic,
+    BossMimic,
+    Spider,
+    Dragon
 }

@@ -5,17 +5,21 @@ using UnityEngine;
 
 public class DungeonManager : MonoBehaviour
 {
-    [SerializeField] private SidesServer sidesServer;
+	[SerializeField] private SidesServer sidesServer;
 	[SerializeField] private BattleManager battleManager;
 	[SerializeField] private PlayerMovement playerMovement;
 	[SerializeField] private Player player;
-    [SerializeField] private SideInventory sidesInventory;
-    [SerializeField] private CallEnemiesManager callEnemiesManager;
+	[SerializeField] private SideInventory sidesInventory;
+	[SerializeField] private CallEnemiesManager callEnemiesManager;
 	[SerializeField] private float timeBetweenStages = 0.3f;
 	private int currentStage = 1;
-    private Enemy enemy;
+	private Enemy enemy;
 	public int CurrentStage => currentStage;
 	public bool IsPlayerMoving => playerMovement != null && playerMovement.IsPlayerMoving;
+
+	//SE関係
+	[SerializeField] private GameObject seSpeaker;//SESpeakerのprefab
+	[SerializeField] private AudioClip victorySE;
 
 	void Start()
 	{
@@ -29,20 +33,22 @@ public class DungeonManager : MonoBehaviour
 	}
 	private void StartBattle(int stage)
 	{
-		
+
 		enemy = callEnemiesManager.InstantiateEnemyPrefab(stage);
 		battleManager.StartBattle(enemy);
 	}
-    
-    public void OnBattleWon()
+
+	public void OnBattleWon()
 	{
-        Logger.Log("OnBattleWon called");
+		Logger.Log("OnBattleWon called");
 		player.RecoverLife();
 		Destroy(enemy.gameObject);
-        sidesInventory.Add(sidesServer.GetRandomSide());
+		GameObject seSpeakerInstance = Instantiate(seSpeaker);
+		seSpeakerInstance.GetComponent<SESpeaker>().Play(victorySE);
+		sidesInventory.Add(sidesServer.GetRandomSide());
 		Invoke(nameof(StartNextStage), timeBetweenStages);
 	}
-    private bool StartNextStage()
+	private bool StartNextStage()
 	{
 		currentStage++;
 		playerMovement?.Advance();

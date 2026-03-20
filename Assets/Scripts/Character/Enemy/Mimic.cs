@@ -1,11 +1,19 @@
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class Mimic : Enemy
 {
-    public override void Act(Player player)
+    [SerializeField] private Sprite currentSprite;
+    [SerializeField] private Sprite[] mimicSprites = new Sprite[3];
+
+    public void Start()
     {
-        // Mimicの行動ルーティンを定義する
-        // 例: プレイヤーに攻撃する、アイテムをドロップするなど
-        Attack(player, power);
+        // Mimicの見た目のランダム化処理
+        int randomIndex = Random.Range(0, mimicSprites.Length);
+        currentSprite = mimicSprites[randomIndex];
+        GetComponent<SpriteRenderer>().sprite = currentSprite;
     }
 }

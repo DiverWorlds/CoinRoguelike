@@ -739,7 +739,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30B3\u30A4\u30F3\u8A73\u7D30"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 342f462de99b14add994107e2a641960, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ee9d111689cf24d9ea6a37001941aad4, type: 2}
   m_sharedMaterial: {fileID: 3155316296918209328, guid: 00ef727e676c24059a39c547e25f2b2c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1461,6 +1461,8 @@ MonoBehaviour:
   sidesInventory: {fileID: 336070861}
   callEnemiesManager: {fileID: 1817639046}
   timeBetweenStages: 0.3
+  seSpeaker: {fileID: 659056857859430532, guid: 149d965359e8c46e4b69ab3bda713fda, type: 3}
+  victorySE: {fileID: 8300000, guid: 91db41294c4c14fe29474bc728fae22d, type: 3}
 --- !u!33 &1817639040
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -89944,10 +89946,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CallEnemiesManager
   enemyPrefabs:
   - enemyName: 0
-    enemyPrefab: {fileID: 2050836041188518643, guid: f9028ef050b014c11b7d28c05056b77c, type: 3}
+    enemyPrefab: {fileID: 8033927177173770325, guid: f9028ef050b014c11b7d28c05056b77c, type: 3}
+  - enemyName: 1
+    enemyPrefab: {fileID: 2834006523663637711, guid: fd3e7937edc5d4855bd384ac9c402ff5, type: 3}
+  - enemyName: 2
+    enemyPrefab: {fileID: -8780793025535394973, guid: 9e5f1ea2b26a249f680b1987d6b37283, type: 3}
+  - enemyName: 3
+    enemyPrefab: {fileID: -8780793025535394973, guid: 2b6b88953bab84f50915404814fbae4b, type: 3}
   player: {fileID: 868224620}
   enemyOffset: 5
   initialEnemyOffset: 2
+  enemySpawnOffset: {x: 0, y: 0.8, z: 0}
 --- !u!1 &1860301688
 GameObject:
   m_ObjectHideFlags: 0
@@ -90159,6 +90168,63 @@ MonoBehaviour:
   - {fileID: 1924197260}
   - {fileID: 466616345}
   coinFactory: {fileID: 1860301691}
+--- !u!1001 &749120424604029972
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1036984047399591251, guid: 90159f64b82054a97928adf12dcb9332, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.59165
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036984047399591251, guid: 90159f64b82054a97928adf12dcb9332, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.56578
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036984047399591251, guid: 90159f64b82054a97928adf12dcb9332, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.62089
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036984047399591251, guid: 90159f64b82054a97928adf12dcb9332, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036984047399591251, guid: 90159f64b82054a97928adf12dcb9332, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036984047399591251, guid: 90159f64b82054a97928adf12dcb9332, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036984047399591251, guid: 90159f64b82054a97928adf12dcb9332, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036984047399591251, guid: 90159f64b82054a97928adf12dcb9332, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036984047399591251, guid: 90159f64b82054a97928adf12dcb9332, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036984047399591251, guid: 90159f64b82054a97928adf12dcb9332, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865208660098034325, guid: 90159f64b82054a97928adf12dcb9332, type: 3}
+      propertyPath: m_Name
+      value: BGMSpeaker
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 90159f64b82054a97928adf12dcb9332, type: 3}
 --- !u!1001 &1528833916559064969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90167,10 +90233,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1076728079}
     m_Modifications:
+    - target: {fileID: 500360648056727524, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: ee9d111689cf24d9ea6a37001941aad4, type: 2}
+    - target: {fileID: 500360648056727524, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3155316296918209328, guid: ee9d111689cf24d9ea6a37001941aad4, type: 2}
+    - target: {fileID: 500360648056727524, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2740195402542627397, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
       propertyPath: dungeonManager
       value: 
       objectReference: {fileID: 1817639038}
+    - target: {fileID: 3246274576602400095, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: ee9d111689cf24d9ea6a37001941aad4, type: 2}
+    - target: {fileID: 3246274576602400095, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3155316296918209328, guid: ee9d111689cf24d9ea6a37001941aad4, type: 2}
+    - target: {fileID: 3246274576602400095, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7691607323343020001, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
       propertyPath: m_Name
       value: StageDisplay
@@ -90279,11 +90369,11 @@ PrefabInstance:
     - target: {fileID: 1850167097293334467, guid: aa9a8386d13a24469ad318797530612c, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 342f462de99b14add994107e2a641960, type: 2}
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 1850167097293334467, guid: aa9a8386d13a24469ad318797530612c, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 1691517965635286117, guid: 342f462de99b14add994107e2a641960, type: 2}
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 1850167097293334467, guid: aa9a8386d13a24469ad318797530612c, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -90466,3 +90556,4 @@ SceneRoots:
   - {fileID: 364478219}
   - {fileID: 1309242923}
   - {fileID: 2107129767}
+  - {fileID: 749120424604029972}

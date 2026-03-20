@@ -37,7 +37,7 @@ abstract public class Character : MonoBehaviour
         {
             currentLife = 0;
         }
-        
+
     }
     public void TakeStay()
     {
