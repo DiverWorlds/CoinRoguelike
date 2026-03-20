@@ -26,9 +26,8 @@ public class SideRecordsManager : MonoBehaviour
     public void CreateRecord(BaseSide side)
     {
         Logger.Log($"CreateRecord: {side.EffectName}");
-        var recordObj = Instantiate(sideRecordPrefab.gameObject);
-        recordObj.transform.SetParent(transform);
-        var record = recordObj.GetComponent<SideRecord>();
+        var record = Instantiate(sideRecordPrefab, transform, false);
+        record.transform.localScale = sideRecordPrefab.transform.localScale;
         record.Initialize(side);
         records.Add(record);
     }
