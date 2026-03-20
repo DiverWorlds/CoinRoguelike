@@ -18,8 +18,6 @@ public class CallEnemiesManager : MonoBehaviour
 
     public Enemy InstantiateEnemyPrefab(int stage)
     {
-        //TODO: ミミックしか出ないのでロジックを書く
-        //TODO: コメントわかりやすく
         EnemyPrefabData enemyData;
         if (stage % 10 == 0)//10の倍数のステージでは、通常よりも強い敵（例: ボスミミック）を出現させるロジック。
         {
