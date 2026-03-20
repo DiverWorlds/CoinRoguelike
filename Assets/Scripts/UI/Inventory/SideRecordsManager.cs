@@ -4,16 +4,28 @@ using UnityEngine;
 
 public class SideRecordsManager : MonoBehaviour
 {
+    [SerializeField] private BaseSide side;
     [SerializeField] private SideRecord sideRecordPrefab;
     public enum SortType { Strength, Weight }
     private List<SideRecord> records = new List<SideRecord>();
     void Start()
     {
-
+        Logger.Log("SideRecordsManager Start");
+        // Debug
+        for (int i=0; i<5; i++)
+        {
+            BaseSide newSide = Instantiate(side.gameObject, InventoryManager.Instance.SideInventory.transform).GetComponent<BaseSide>();
+            newSide.Initialize();
+            Logger.Log($"side: {newSide.EffectName}");
+            InventoryManager.Instance.SideInventory.Add(newSide);
+        }
+        CreateAllRecords();
     }
 
+    //TODO: 呼ぶ。Removeも
     public void CreateRecord(BaseSide side)
     {
+        Logger.Log($"CreateRecord: {side.EffectName}");
         var recordObj = Instantiate(sideRecordPrefab.gameObject);
         recordObj.transform.SetParent(transform);
         var record = recordObj.GetComponent<SideRecord>();
@@ -22,6 +34,8 @@ public class SideRecordsManager : MonoBehaviour
     }
     public void CreateAllRecords()
     {
+        Logger.Log("CreateAllRecords");
+        Logger.LogElements(InventoryManager.Instance.SideInventory.GetByFrontOrBack(SidePanel.Instance.FrontOrBack).Select(s => s.EffectName));
         foreach (var side in InventoryManager.Instance.SideInventory.GetByFrontOrBack(SidePanel.Instance.FrontOrBack))
         {
             CreateRecord(side);
@@ -31,20 +45,20 @@ public class SideRecordsManager : MonoBehaviour
     {
         // 1. 子要素の Transform と、そこについているデータ用コンポーネントをペアで取得
         var children = transform.Cast<Transform>()
-            .Select(t => new { Trans = t, Data = t.GetComponent<BaseSide>() })
+            .Select(t => new { Trans = t, Data = t.GetComponent<SideRecord>() })
             .Where(x => x.Data != null); // ItemDataがないものは除外
 
         // 2. 指定されたタイプに応じて並び替え
         IEnumerable<Transform> sorted;
         if (type == SortType.Strength)
         {
-            sorted = ascending ? children.OrderBy(x => x.Data.Strength).Select(x => x.Trans)
-                               : children.OrderByDescending(x => x.Data.Strength).Select(x => x.Trans);
+            sorted = ascending ? children.OrderBy(x => x.Data.Side.Strength).Select(x => x.Trans)
+                               : children.OrderByDescending(x => x.Data.Side.Strength).Select(x => x.Trans);
         }
         else
         {
-            sorted = ascending ? children.OrderBy(x => x.Data.Weight).Select(x => x.Trans)
-                               : children.OrderByDescending(x => x.Data.Weight).Select(x => x.Trans);
+            sorted = ascending ? children.OrderBy(x => x.Data.Side.Weight).Select(x => x.Trans)
+                               : children.OrderByDescending(x => x.Data.Side.Weight).Select(x => x.Trans);
         }
 
         // 3. Hierarchy上のインデックスを再設定
@@ -58,6 +72,7 @@ public class SideRecordsManager : MonoBehaviour
     }
     public void RemoveRecord(SideRecord record)
     {
+        Logger.Log($"RemoveRecord: {record.Side.EffectName}");
         if (records.Contains(record))
         {
             records.Remove(record);
@@ -66,6 +81,7 @@ public class SideRecordsManager : MonoBehaviour
     }
     public void RemoveAllRecords()
     {
+        Logger.Log("RemoveAllRecords");
         foreach ( var record in records)
         {
             RemoveRecord(record);

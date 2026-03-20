@@ -8,6 +8,8 @@ public class SideRecord : MonoBehaviour
     [SerializeField] private TextMeshProUGUI weightText;
     private BaseSide side;
 
+    public BaseSide Side => side;
+
     public void Initialize(BaseSide side)
     {
         this.side = side;

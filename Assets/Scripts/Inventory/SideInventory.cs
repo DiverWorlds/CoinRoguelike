@@ -9,6 +9,7 @@ public class SideInventory : MonoBehaviour
 
     public void Add(BaseSide side)
     {
+        Logger.Log($"Add Side: {side.EffectName}");
         sides.Add(side);
     }
     public void Remove(BaseSide side)
@@ -35,6 +36,7 @@ public class SideInventory : MonoBehaviour
     }
     public List<BaseSide> GetByFrontOrBack(FrontAndBack frontOrBack)
     {
+        Logger.LogElements("sides", sides.Select(s => $"{s.EffectName}({s.FrontOrBack})"));
         return sides.Where(side => side.FrontOrBack == frontOrBack).ToList();
     }
 

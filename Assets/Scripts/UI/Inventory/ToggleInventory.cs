@@ -23,9 +23,5 @@ public class ToggleInventory : MonoBehaviour
     public void OnClick()
     {
         inventoryCanvas.gameObject.SetActive(isOpenButton);
-        // if (isOpenButton)
-        // {
-        //     buttonImage.enabled = false;
-        // }
     }
 }
