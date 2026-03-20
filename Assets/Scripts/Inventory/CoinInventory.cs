@@ -1,24 +1,40 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class CoinInventory : MonoBehaviour
 {
+    private Action<Coin> onCoinAdded;
+    private Action<Coin> onCoinRemoved;
+
     //TODO: コインの種類で自動ソート機能を追加するかも
     public const int MinCoinCount = 1;
     public const int MaxCoinCount = 3;
 
     private List<Coin> coins = new List<Coin>();
-
+    
+    public event Action<Coin> OnCoinAdded
+    {
+        add => onCoinAdded += value;
+        remove => onCoinAdded -= value;
+    }
+    public event Action<Coin> OnCoinRemoved
+    {
+        add => onCoinRemoved += value;
+        remove => onCoinRemoved -= value;
+    }
     public int CoinCount => coins.Count;
 
     public void Add(Coin coin)
     {
         coins.Add(coin);
+        onCoinAdded?.Invoke(coin);
     }
 
     public bool Remove(Coin coin)
     {
+        Logger.Log("Remove called with coin: " + (coin != null ? $"{coin.FrontSideValue} / {coin.BackSideValue}" : "null"));
         if (coin == null)
         {
             return false;
@@ -31,6 +47,8 @@ public class CoinInventory : MonoBehaviour
 
         bool isRemoved = coins.Remove(coin);
         Destroy(coin.gameObject);
+        onCoinRemoved?.Invoke(coin);
+        Logger.Log("onCoinRemoved invoked for coin: " + (coin != null ? $"{coin.FrontSideValue} / {coin.BackSideValue}" : "null") + ", isRemoved: " + isRemoved);
 
         return isRemoved;
     }

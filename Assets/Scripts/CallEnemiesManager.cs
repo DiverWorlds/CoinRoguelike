@@ -10,7 +10,7 @@ public class CallEnemiesManager : MonoBehaviour
         public Enemies enemyName;
         public Enemy enemyPrefab;
     }
-    [SerializeField] private List<EnemyPrefabData> enemyPrefabs = new List<EnemyPrefabData>();
+	[SerializeField] private List<EnemyPrefabData> enemyPrefabs = new List<EnemyPrefabData>();
     [SerializeField] private Transform player;
     [SerializeField] private float enemyOffset = 8f;
     [SerializeField] private float initialEnemyOffset = 2f;
