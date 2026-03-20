@@ -9,8 +9,13 @@ public class CoinFactory : MonoBehaviour
     [SerializeField] private Transform coin2Slot;
     [SerializeField] private Transform coin3Slot;
 
-    public Coin CreateCoin(BaseSide frontSide, BaseSide backSide)
+    public Coin CreateCoin(BaseSide side1, BaseSide side2)
     {
+		if (side1.FrontOrBack == side2.FrontOrBack)
+		{
+			Debug.LogError("Cannot create coin with two sides of the same type.");
+			return null;
+		}
 		int targetIndex = coinInventory.CoinCount;
 		Transform parentSlot = GetSlotByIndex(targetIndex);
 		if (parentSlot == null)
@@ -23,26 +28,26 @@ public class CoinFactory : MonoBehaviour
         
         coinInventory.Add(coinInstance);
 
-		float frontSideProbability = CalcFrontSideProbability(frontSide, backSide);
-		int frontSideValue = CalcFrontSideValue(frontSide);
-		int backSideValue = CalcBackSideValue(backSide);
-		float backSideBonus = CalcBackSideBonus(backSide);
+		float frontSideProbability = CalcFrontSideProbability(side1, side2);
+		int frontSideValue = CalcFrontSideValue(side1);
+		int backSideValue = CalcBackSideValue(side2);
+		float backSideBonus = CalcBackSideBonus(side2);
 
-		coinInstance.Initialize(frontSide, backSide, frontSideProbability, frontSideValue, backSideValue, backSideBonus);
+		coinInstance.Initialize(side1, side2, frontSideProbability, frontSideValue, backSideValue, backSideBonus);
 
-		frontSide.transform.SetParent(coinInstance.transform, false);
-		backSide.transform.SetParent(coinInstance.transform, false);
+		side1.transform.SetParent(coinInstance.transform, false);
+		side2.transform.SetParent(coinInstance.transform, false);
 
 		coinInstance.transform.localPosition = Vector3.zero;
 		coinInstance.transform.localRotation = Quaternion.identity;
 
 		return coinInstance;
     }
-	public Coin CombineSides(BaseSide frontSide, BaseSide backSide)
+	public Coin CombineSides(BaseSide side1, BaseSide side2)
 	{
-        sideInventory.Remove(frontSide);
-        sideInventory.Remove(backSide);
-        return CreateCoin(frontSide, backSide);
+        sideInventory.Remove(side1);
+        sideInventory.Remove(side2);
+        return CreateCoin(side1, side2);
 	}
 
 	private Transform GetSlotByIndex(int index)
