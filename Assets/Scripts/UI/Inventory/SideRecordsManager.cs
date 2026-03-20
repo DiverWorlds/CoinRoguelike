@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SideRecordsManager : MonoBehaviour
 {
+    [SerializeField] private SideRecord sideRecordPrefab;
     public enum SortType { Strength, Weight }
     private List<SideRecord> records = new List<SideRecord>();
     void Start()
@@ -11,16 +12,19 @@ public class SideRecordsManager : MonoBehaviour
 
     }
 
-    public void CreateRecords(List<BaseSide> sides)
+    public void CreateRecord(BaseSide side)
     {
-        // 新しいレコードを作成
-        foreach (var side in sides)
+        var recordObj = Instantiate(sideRecordPrefab.gameObject);
+        recordObj.transform.SetParent(transform);
+        var record = recordObj.GetComponent<SideRecord>();
+        record.Initialize(side);
+        records.Add(record);
+    }
+    public void CreateAllRecords()
+    {
+        foreach (var side in InventoryManager.Instance.SideInventory.GetByFrontOrBack(SidePanel.Instance.FrontOrBack))
         {
-            var recordObj = new GameObject("SideRecord");
-            recordObj.transform.SetParent(transform);
-            var record = recordObj.AddComponent<SideRecord>();
-            record.Initialize(side);
-            records.Add(record);
+            CreateRecord(side);
         }
     }
     public void SortChildren(SortType type, bool ascending = true)
@@ -52,12 +56,19 @@ public class SideRecordsManager : MonoBehaviour
 
         Debug.Log($"{type} でソートしました（{(ascending ? "昇順" : "降順")}）");
     }
-    public void RemoveAllRecords()
+    public void RemoveRecord(SideRecord record)
     {
-        foreach (var record in records)
+        if (records.Contains(record))
         {
+            records.Remove(record);
             Destroy(record.gameObject);
         }
-        records.Clear();
+    }
+    public void RemoveAllRecords()
+    {
+        foreach ( var record in records)
+        {
+            RemoveRecord(record);
+        }
     }
 }

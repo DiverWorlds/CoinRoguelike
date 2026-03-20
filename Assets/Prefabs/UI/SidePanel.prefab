@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7526859013338417698}
   - component: {fileID: 3870730847808095432}
   - component: {fileID: 8842311946436271219}
+  - component: {fileID: 7355561105289952125}
   m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
@@ -34,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 19414.625}
+  m_AnchoredPosition: {x: 0, y: 0.00036026697}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3870730847808095432
@@ -77,6 +78,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 1
+--- !u!114 &7355561105289952125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310394786183606862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36535d28bbf05480e985ef868cdd8636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SideRecordsManager
+  sideRecordPrefab: {fileID: 399210461359355972, guid: e8e68d4c50b084f7d839e9c5f67894ac, type: 3}
 --- !u!1 &1432433950081710574
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +544,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6904444244434225554}
+  - component: {fileID: 3482296657294240377}
   m_Layer: 0
   m_Name: SidePanel
   m_TagString: Untagged
@@ -557,6 +572,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3482296657294240377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292511816061697569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5383a0c1a154045058521b26cac46cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  frontOrBack: 0
 --- !u!1 &2504888674607701547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,8 +1371,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4402183740474298436}
   m_HandleRect: {fileID: 5067811788953276814}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

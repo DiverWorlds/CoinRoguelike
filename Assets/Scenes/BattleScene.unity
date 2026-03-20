@@ -1363,6 +1363,7 @@ MonoBehaviour:
   button: {fileID: 1727670525}
   buttonImage: {fileID: 1727670526}
   isOpenButton: 1
+  closeToggleInventory: {fileID: 0}
 --- !u!114 &1727670525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90358,6 +90359,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 498343496811482308, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 498343496811482308, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 662263251273002596, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
       propertyPath: coinInventory
       value: 
@@ -90408,6 +90417,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1480389224779158440, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2939378694582441832, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375686405764642268, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375686405764642268, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375686405764642268, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8613060257263035914, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
