@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class DiscardCoinDetail : MonoBehaviour
+public class CoinDetail : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI frontNameText;
     [SerializeField] private TextMeshProUGUI backNameText;
@@ -9,10 +9,12 @@ public class DiscardCoinDetail : MonoBehaviour
     [SerializeField] private TextMeshProUGUI backStrengthText;
     [SerializeField] private TextMeshProUGUI frontProbabilityText;
     [SerializeField] private TextMeshProUGUI backProbabilityText;
+    [SerializeField] private TextMeshProUGUI bonusText;
 
     private Coin coin;
     public Coin Coin
     {
+        get => coin;
         set
         {
             coin = value;
@@ -22,13 +24,17 @@ public class DiscardCoinDetail : MonoBehaviour
 
     private void SetCoinDetail()
     {
+        Logger.Log("SetCoinDetail called)");
         if (coin == null)
         {
+            Logger.Log("Coin is null");
             frontNameText.text = "";
             backNameText.text = "";
             frontStrengthText.text = "";
             backStrengthText.text = "";
             frontProbabilityText.text = "";
+            backProbabilityText.text = "";
+            bonusText.text = "";
             return;
         }
         
@@ -38,5 +44,6 @@ public class DiscardCoinDetail : MonoBehaviour
         backStrengthText.text = $"{coin.BackSideValue}";
         frontProbabilityText.text = $"{coin.FrontSideProbability * 100f:F1}%";
         backProbabilityText.text = $"{(1-coin.FrontSideProbability) * 100f:F1}%";
+        if (bonusText != null) bonusText.text = $"入れる";
     }
 }

@@ -5,12 +5,12 @@ using System;
 public class CallEnemiesManager : MonoBehaviour
 {
     [Serializable]
-    private class enemyPrefabData
+    private class EnemyPrefabData
     {
         public Enemies enemyName;
         public Enemy enemyPrefab;
     }
-	[SerializeField] private List<enemyPrefabData> enemyPrefabs = new List<enemyPrefabData>();
+	[SerializeField] private List<EnemyPrefabData> enemyPrefabs = new List<EnemyPrefabData>();
     [SerializeField] private Transform player;
     [SerializeField] private float enemyOffset = 8f;
     [SerializeField] private float initialEnemyOffset = 2f;

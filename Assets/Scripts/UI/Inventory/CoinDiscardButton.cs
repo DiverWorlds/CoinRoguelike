@@ -6,20 +6,21 @@ public class CoinDiscardButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 {
     [SerializeField] private Color disableColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
     [SerializeField] private Image trashIcon;
-	private Image detailPanel;
+    [SerializeField] private EventTrigger eventTrigger;
+    [SerializeField] private Button PanelCloseArea;
+	[SerializeField] private GameObject discardCoinDetail;
+    [SerializeField] private CoinDiscardButtons coinDiscardButtons;
     private Coin coin;
 	private Button button;
 	private Image buttonImage;
-	private bool isHovering;
-	private bool isPinned;
-	private RectTransform buttonRect;
-	private RectTransform panelRect;
+    private bool isClicked;
+    private bool isActive;
 	private Color activeButtonColor;
 	private Color activeTrashColor;
-	private bool isActive;
 
     public Coin Coin
 	{
+        get => coin;
 		set
 		{
             Logger.Log("Setting CoinDiscardButton.Coin: " + (value != null ? $"{value.FrontSideValue} / {value.BackSideValue}" : "null"));
@@ -30,101 +31,64 @@ public class CoinDiscardButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
 	private void Awake()
 	{
-        detailPanel = transform.parent.GetComponent<CoinDiscardButtons>().DetailPanel;
 		button = GetComponent<Button>();
 		buttonImage = GetComponent<Image>();
 		activeButtonColor = buttonImage != null ? buttonImage.color : Color.white;
 		activeTrashColor = trashIcon != null ? trashIcon.color : Color.white;
-		buttonRect = transform as RectTransform;
-		panelRect = detailPanel.transform as RectTransform;
 		SetButtonActive(false);
 	}
-
-	private void Update()
-	{
-		if (!isActive)
-		{
-			return;
-		}
-
-		if (!isPinned || detailPanel == null || !detailPanel.gameObject.activeSelf)
-		{
-			return;
-		}
-
-		if (!Input.GetMouseButtonDown(0))
-		{
-			return;
-		}
-
-		Vector2 pointer = Input.mousePosition;
-		if (IsInside(buttonRect, pointer) || IsInside(panelRect, pointer))
-		{
-			return;
-		}
-
-		isPinned = false;
-		RefreshPanel();
-	}
+    void Start()
+    {
+        PanelCloseArea.onClick.AddListener(() =>
+        {
+            Logger.Log("PanelCloseArea clicked");
+            isClicked = false;
+            ClosePanel();
+        });
+    }
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
-		if (!isActive)
-		{
-			return;
-		}
-
-		isHovering = true;
-		RefreshPanel();
+        if (!isActive) return;
+        Logger.Log("Pointer entered CoinDiscardButton");
+		OpenPanel();
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
-		if (!isActive)
-		{
-			return;
-		}
-
-		isHovering = false;
-		RefreshPanel();
+        if (!isActive) return;
+        Logger.Log("Pointer exited CoinDiscardButton");
+        if (isClicked) return;
+		ClosePanel();
 	}
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
-		if (!isActive)
-		{
-			return;
-		}
-
-		isPinned = true;
-		RefreshPanel();
+        if (!isActive) return;
+        isClicked = true;
+		OpenPanel();
 	}
-
-	private void RefreshPanel()
-	{
-		if (detailPanel == null)
-		{
-			return;
-		}
-
-		detailPanel.gameObject.SetActive(isHovering || isPinned);
-	}
-
-	private bool IsInside(RectTransform rect, Vector2 pointer)
-	{
-		if (rect == null)
-		{
-			return false;
-		}
-
-		Canvas canvas = rect.GetComponentInParent<Canvas>();
-		Camera camera = canvas != null && canvas.renderMode != RenderMode.ScreenSpaceOverlay ? canvas.worldCamera : null;
-		return RectTransformUtility.RectangleContainsScreenPoint(rect, pointer, camera);
-	}
-    private void SetButtonActive(bool isActive)
+    public void CancelIsClicked()
     {
-		this.isActive = isActive;
+        if (!isActive) return;
+        isClicked = false;
+        ClosePanel();   
+    }
+	private void OpenPanel()
+	{
+        Logger.Log("OpenPanel called for CoinDiscardButton");
+		discardCoinDetail.SetActive(true);
+        coinDiscardButtons.CoinDetail.Coin = coin;
+	}
+    private void ClosePanel()
+    {
+        discardCoinDetail.SetActive(false);
+    }
 
+    public void SetButtonActive(bool isActive)
+    {
+        Logger.Log("SetButtonActive called for CoinDiscardButton: " + isActive);
+        this.isActive = isActive;
 		if (button != null)
 		{
 			button.interactable = isActive;
@@ -138,13 +102,6 @@ public class CoinDiscardButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 		if (trashIcon != null)
 		{
 			trashIcon.color = isActive ? activeTrashColor : disableColor;
-		}
-
-		if (!isActive)
-		{
-			isHovering = false;
-			isPinned = false;
-			RefreshPanel();
 		}
     }
 }

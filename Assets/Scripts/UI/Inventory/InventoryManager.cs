@@ -7,6 +7,10 @@ public class InventoryManager : Singleton<InventoryManager>
     [SerializeField] private CoinInventory coinInventory;
     [SerializeField] private CoinDiscardButtons coinDiscardButtons;
 
+    public SideInventory SideInventory => sideInventory;
+    public CoinInventory CoinInventory => coinInventory;
+    public CoinDiscardButtons CoinDiscardButtons => coinDiscardButtons;
+
     public void OnInventoryOpened()
     {
         Logger.Log("OnInventoryOpened called");
