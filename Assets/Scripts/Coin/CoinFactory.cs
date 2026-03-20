@@ -26,8 +26,9 @@ public class CoinFactory : MonoBehaviour
 		float frontSideProbability = CalcFrontSideProbability(frontSide, backSide);
 		int frontSideValue = CalcFrontSideValue(frontSide);
 		int backSideValue = CalcBackSideValue(backSide);
-        
-		coinInstance.Initialize(frontSide, backSide, frontSideProbability, frontSideValue, backSideValue);
+		float backSideBonus = CalcBackSideBonus(backSide);
+
+		coinInstance.Initialize(frontSide, backSide, frontSideProbability, frontSideValue, backSideValue, backSideBonus);
 
 		frontSide.transform.SetParent(coinInstance.transform, false);
 		backSide.transform.SetParent(coinInstance.transform, false);
@@ -84,5 +85,10 @@ public class CoinFactory : MonoBehaviour
 	{
 		// TODO: ちゃんと作る
 		return backSide.Strength;
+	}
+	private float CalcBackSideBonus(BaseSide backSide)
+	{
+		//TODO: ちゃんと作る
+		return backSide.Weight * 0.1f;
 	}
 }

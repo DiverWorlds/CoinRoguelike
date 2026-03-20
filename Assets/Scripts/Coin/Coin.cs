@@ -7,20 +7,23 @@ public class Coin : MonoBehaviour
     private float frontSideProbability;
     private int frontSideValue;
     private int backSideValue;
+    private float backSideBonus;
 
     public string FrontEffectName => frontSide.EffectName;
     public string BackEffectName => backSide.EffectName;
     public float FrontSideProbability => frontSideProbability;
     public int FrontSideValue => frontSideValue;
     public int BackSideValue => backSideValue;
+    public float BackSideBonus => backSideBonus;
 
-    public void Initialize(BaseSide frontSide, BaseSide backSide, float frontSideProbability, int frontSideValue, int backSideValue)
+    public void Initialize(BaseSide frontSide, BaseSide backSide, float frontSideProbability, int frontSideValue, int backSideValue, float backSideBonus)
     {
         this.frontSide = frontSide;
         this.backSide = backSide;
         this.frontSideProbability = frontSideProbability;
         this.frontSideValue = frontSideValue;
         this.backSideValue = backSideValue;
+        this.backSideBonus = backSideBonus;
     }
 
     public void Effect(Character target)
