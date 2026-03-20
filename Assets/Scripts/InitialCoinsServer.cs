@@ -11,29 +11,15 @@ public class InitialCoinsServer : MonoBehaviour
     [SerializeField] private CoinFactory coinFactory;
     void Start()
     {
-        List<BaseSide> sides = new();
-        foreach (var side in sidesServer.GetSides())
-        {
-            BaseSide newSide = Instantiate(side.gameObject, sideInventory.transform).GetComponent<BaseSide>();
-            newSide.Initialize();
-            sides.Add(newSide);
-        }
+        //初期コインの生成、1枚目
+        BaseSide side1 = sidesServer.GetSpecificSide(1, "攻撃");
+        BaseSide side2 = sidesServer.GetSpecificSide(1, "ミス");
+        coinFactory.CreateCoin(side1, side2);
 
-        //TODO: デバッグ用に足りないSideを雑に生成してるので、ちゃんとした方法で初期コインを生成するようにする
-        for (int i = 0; i < 2; i++)
-        {
-            foreach (var side in sidesServer.GetSides())
-            {
-                BaseSide newSide = Instantiate(side.gameObject, sideInventory.transform).GetComponent<BaseSide>();
-                newSide.Initialize();
-                sides.Add(newSide);
-            }
-        }
+        //初期コインの生成、2枚目
+        side1 = sidesServer.GetSpecificSide(1, "回復");
+        side2 = sidesServer.GetSpecificSide(1, "暴発");
+        coinFactory.CreateCoin(side1, side2);
 
-        //TODO: 雑に作ってるので直す
-        for (int i = 0; i < 3; i++)
-        {
-            coinFactory.CreateCoin(sides[2*i], sides[2*i+1]);
-        }
     }
 }

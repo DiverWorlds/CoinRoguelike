@@ -3,14 +3,14 @@ using UnityEngine;
 public class CoinFactory : MonoBehaviour
 {
 	[SerializeField] private Coin coinPrefab;
-    [SerializeField] private SideInventory sideInventory;
+	[SerializeField] private SideInventory sideInventory;
 	[SerializeField] private CoinInventory coinInventory;
-    [SerializeField] private Transform coin1Slot;
-    [SerializeField] private Transform coin2Slot;
-    [SerializeField] private Transform coin3Slot;
+	[SerializeField] private Transform coin1Slot;
+	[SerializeField] private Transform coin2Slot;
+	[SerializeField] private Transform coin3Slot;
 
-    public Coin CreateCoin(BaseSide side1, BaseSide side2)
-    {
+	public Coin CreateCoin(BaseSide side1, BaseSide side2)
+	{
 		if (side1.FrontOrBack == side2.FrontOrBack)
 		{
 			Debug.LogError("Cannot create coin with two sides of the same type.");
@@ -25,13 +25,13 @@ public class CoinFactory : MonoBehaviour
 		}
 
 		Coin coinInstance = Instantiate(coinPrefab, parentSlot, false);
-        
-        coinInventory.Add(coinInstance);
+
+		coinInventory.Add(coinInstance);
 
 		float frontSideProbability = CalcFrontSideProbability(side1, side2);
-		int frontSideValue = CalcFrontSideValue(side1);
+		float backSideBonus = CalcBackSideBonus(frontSideProbability);
+		int frontSideValue = CalcFrontSideValue(side1, backSideBonus);
 		int backSideValue = CalcBackSideValue(side2);
-		float backSideBonus = CalcBackSideBonus(side2);
 
 		coinInstance.Initialize(side1, side2, frontSideProbability, frontSideValue, backSideValue, backSideBonus);
 
@@ -42,12 +42,12 @@ public class CoinFactory : MonoBehaviour
 		coinInstance.transform.localRotation = Quaternion.identity;
 
 		return coinInstance;
-    }
+	}
 	public Coin CombineSides(BaseSide side1, BaseSide side2)
 	{
-        sideInventory.Remove(side1);
-        sideInventory.Remove(side2);
-        return CreateCoin(side1, side2);
+		sideInventory.Remove(side1);
+		sideInventory.Remove(side2);
+		return CreateCoin(side1, side2);
 	}
 
 	private Transform GetSlotByIndex(int index)
@@ -80,10 +80,10 @@ public class CoinFactory : MonoBehaviour
 		return Mathf.Round(probability * 1000f) / 1000f;
 	}
 
-	private int CalcFrontSideValue(BaseSide frontSide)
+	private int CalcFrontSideValue(BaseSide frontSide, float backSideBonus)
 	{
-		// TODO: ちゃんと作る
-		return frontSide.Strength;
+		//丸め込み
+		return Mathf.RoundToInt(frontSide.Strength * backSideBonus);
 	}
 
 	private int CalcBackSideValue(BaseSide backSide)
@@ -91,9 +91,9 @@ public class CoinFactory : MonoBehaviour
 		// TODO: ちゃんと作る
 		return backSide.Strength;
 	}
-	private float CalcBackSideBonus(BaseSide backSide)
+	private float CalcBackSideBonus(float frontSideProbability)
 	{
-		//TODO: ちゃんと作る
-		return backSide.Weight * 0.1f;
+		//1 + (1 - frontSideProbability) みたいな感じで、表の出る確率が低いほど裏のボーナスが高くなる
+		return 2 - frontSideProbability;
 	}
 }
