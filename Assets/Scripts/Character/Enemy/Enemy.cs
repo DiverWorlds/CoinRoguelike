@@ -34,6 +34,12 @@ abstract public class Enemy : Character
     // 行動ルーティンを定義する
     public void Act(Player player)
     {
+        if (SleepCounter > 0)
+        {
+            SleepCounter--;
+            TakeStay();
+            return;
+        }
         UseSkill(player, nextSkill);
     }
     protected void UseSkill(Character target, EnemySkillData skillData)
@@ -60,6 +66,10 @@ abstract public class Enemy : Character
     public void ResetAnimation()
     {
         animator.SetTrigger("Reset");
+    }
+    protected void PutToSleep(int turns)
+    {
+        SleepCounter = turns;
     }
 }
 

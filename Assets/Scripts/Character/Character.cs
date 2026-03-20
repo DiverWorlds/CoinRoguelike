@@ -4,11 +4,19 @@ abstract public class Character : MonoBehaviour
 {
     protected int maxLife;
     private int currentLife;
-    private int sleepCounter = 0;
+    protected int sleepCounter = 0;
 
     public int CurrentLife => currentLife;
     public bool IsDead => currentLife <= 0;
 
+    public int SleepCounter
+    {
+        get => sleepCounter;
+        set
+        {
+            sleepCounter = Mathf.Max(0, value);
+        }
+    }
     public int MaxLife
     {
         get => maxLife;
