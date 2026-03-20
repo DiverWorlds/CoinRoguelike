@@ -47,17 +47,19 @@ public class SideRecordsManager : MonoBehaviour
             .Select(t => new { Trans = t, Data = t.GetComponent<SideRecord>() })
             .Where(x => x.Data != null); // ItemDataがないものは除外
 
-        // 2. 指定されたタイプに応じて並び替え
+        // 2. EffectName を常に昇順で優先し、同値時に指定タイプで並び替え
         IEnumerable<Transform> sorted;
         if (type == SortType.Strength)
         {
-            sorted = ascending ? children.OrderBy(x => x.Data.Side.Strength).Select(x => x.Trans)
-                               : children.OrderByDescending(x => x.Data.Side.Strength).Select(x => x.Trans);
+            sorted = ascending
+            ? children.OrderBy(x => x.Data.Side.EffectName).ThenBy(x => x.Data.Side.Strength).Select(x => x.Trans)
+            : children.OrderBy(x => x.Data.Side.EffectName).ThenByDescending(x => x.Data.Side.Strength).Select(x => x.Trans);
         }
         else
         {
-            sorted = ascending ? children.OrderBy(x => x.Data.Side.Weight).Select(x => x.Trans)
-                               : children.OrderByDescending(x => x.Data.Side.Weight).Select(x => x.Trans);
+            sorted = ascending
+            ? children.OrderBy(x => x.Data.Side.EffectName).ThenBy(x => x.Data.Side.Weight).Select(x => x.Trans)
+            : children.OrderBy(x => x.Data.Side.EffectName).ThenByDescending(x => x.Data.Side.Weight).Select(x => x.Trans);
         }
 
         // 3. Hierarchy上のインデックスを再設定

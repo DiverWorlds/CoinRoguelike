@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 84691.83}
+  m_AnchoredPosition: {x: 0, y: 135589.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3870730847808095432
@@ -1478,6 +1478,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3198060027713164848, guid: 4b0e965de69754bbabde347d7639cbd5, type: 3}
+      propertyPath: sideRecordsManager
+      value: 
+      objectReference: {fileID: 7355561105289952125}
     - target: {fileID: 7336094068572718388, guid: 4b0e965de69754bbabde347d7639cbd5, type: 3}
       propertyPath: m_Name
       value: Sort_Power
@@ -1592,6 +1596,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3198060027713164848, guid: 4b0e965de69754bbabde347d7639cbd5, type: 3}
+      propertyPath: sortType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198060027713164848, guid: 4b0e965de69754bbabde347d7639cbd5, type: 3}
+      propertyPath: sideRecordsManager
+      value: 
+      objectReference: {fileID: 7355561105289952125}
     - target: {fileID: 7336094068572718388, guid: 4b0e965de69754bbabde347d7639cbd5, type: 3}
       propertyPath: m_Name
       value: Sort_Weight
