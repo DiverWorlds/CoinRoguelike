@@ -4,43 +4,88 @@ using UnityEngine;
 
 public class SideRecordsManager : MonoBehaviour
 {
+    [SerializeField] private SideRecord sideRecordPrefab;
+    [SerializeField] private SidePanel sidePanel;
+    [SerializeField] private SidesPanel sidesPanel;
+    [SerializeField] private CoinDetail previewCoinDetail;
+    private SideRecord selectedRecord;
     public enum SortType { Strength, Weight }
     private List<SideRecord> records = new List<SideRecord>();
+    public SideRecord SelectedRecord { get; set; }
+
     void Start()
     {
-
+        Logger.Log("SideRecordsManager Start");
+        CreateAllRecords();
+        InventoryManager.Instance.SideInventory.OnSideAdded += CreateRecord;
     }
 
-    public void CreateRecords(List<BaseSide> sides)
+    //TODO: 呼ぶ。Removeも
+    public void CreateRecord(BaseSide side)
     {
-        // 新しいレコードを作成
-        foreach (var side in sides)
+        if (side.FrontOrBack != sidePanel.FrontOrBack) return;
+
+        Logger.Log($"CreateRecord: {side.EffectName}");
+        Logger.Log($"This ui side is {sidePanel.FrontOrBack}");
+        var record = Instantiate(sideRecordPrefab, transform, false);
+        record.transform.localScale = sideRecordPrefab.transform.localScale;
+        record.Initialize(side, this, sidesPanel, sidePanel.FrontOrBack);
+        records.Add(record);
+    }
+    public void CreateAllRecords()
+    {
+        Logger.Log("CreateAllRecords");
+        Logger.LogElements(InventoryManager.Instance.SideInventory.GetByFrontOrBack(sidePanel.FrontOrBack).Select(s => s.EffectName));
+        foreach (var side in InventoryManager.Instance.SideInventory.GetByFrontOrBack(sidePanel.FrontOrBack))
         {
-            var recordObj = new GameObject("SideRecord");
-            recordObj.transform.SetParent(transform);
-            var record = recordObj.AddComponent<SideRecord>();
-            record.Initialize(side);
-            records.Add(record);
+            CreateRecord(side);
         }
+    }
+    public void SelectRecord(SideRecord record)
+    {
+        Logger.Log($"SelectRecord: {record.Side.EffectName}");
+        if (selectedRecord != null)
+        {
+            selectedRecord.ToggleImageVisualize(false);
+        }
+        selectedRecord = record;
+        if (selectedRecord != null)
+        {
+            selectedRecord.ToggleImageVisualize(true);
+        }
+    }
+    public void UnselectRecord()
+    {
+        if (selectedRecord == null) return;
+        Logger.Log("UnselectRecord");
+        Logger.Log($"Unselecting record: {selectedRecord.Side.EffectName}");
+        if (selectedRecord != null)
+        {
+            selectedRecord.ToggleImageVisualize(false);
+        }
+        selectedRecord = null;
+        if (previewCoinDetail.Coin != null) previewCoinDetail.Coin = null;
     }
     public void SortChildren(SortType type, bool ascending = true)
     {
         // 1. 子要素の Transform と、そこについているデータ用コンポーネントをペアで取得
         var children = transform.Cast<Transform>()
-            .Select(t => new { Trans = t, Data = t.GetComponent<BaseSide>() })
+            .Select(t => new { Trans = t, Data = t.GetComponent<SideRecord>() })
             .Where(x => x.Data != null); // ItemDataがないものは除外
 
-        // 2. 指定されたタイプに応じて並び替え
+        // 2. EffectName を常に昇順で優先し、同値時に指定タイプで並び替え
         IEnumerable<Transform> sorted;
         if (type == SortType.Strength)
         {
-            sorted = ascending ? children.OrderBy(x => x.Data.Strength).Select(x => x.Trans)
-                               : children.OrderByDescending(x => x.Data.Strength).Select(x => x.Trans);
+            sorted = ascending
+            ? children.OrderBy(x => x.Data.Side.EffectName).ThenBy(x => x.Data.Side.Strength).Select(x => x.Trans)
+            : children.OrderBy(x => x.Data.Side.EffectName).ThenByDescending(x => x.Data.Side.Strength).Select(x => x.Trans);
         }
         else
         {
-            sorted = ascending ? children.OrderBy(x => x.Data.Weight).Select(x => x.Trans)
-                               : children.OrderByDescending(x => x.Data.Weight).Select(x => x.Trans);
+            sorted = ascending
+            ? children.OrderBy(x => x.Data.Side.EffectName).ThenBy(x => x.Data.Side.Weight).Select(x => x.Trans)
+            : children.OrderBy(x => x.Data.Side.EffectName).ThenByDescending(x => x.Data.Side.Weight).Select(x => x.Trans);
         }
 
         // 3. Hierarchy上のインデックスを再設定
@@ -52,12 +97,26 @@ public class SideRecordsManager : MonoBehaviour
 
         Debug.Log($"{type} でソートしました（{(ascending ? "昇順" : "降順")}）");
     }
-    public void RemoveAllRecords()
+    public void RemoveRecord(SideRecord record)
     {
-        foreach (var record in records)
+        Logger.Log($"RemoveRecord: {record.Side.EffectName}");
+        if (records.Contains(record))
         {
+            if (selectedRecord == record)
+            {
+                selectedRecord = null;
+                if (previewCoinDetail != null && previewCoinDetail.Coin != null) previewCoinDetail.Coin = null;
+            }
+            records.Remove(record);
             Destroy(record.gameObject);
         }
-        records.Clear();
+    }
+    public void RemoveAllRecords()
+    {
+        Logger.Log("RemoveAllRecords");
+        foreach (var record in records)
+        {
+            RemoveRecord(record);
+        }
     }
 }

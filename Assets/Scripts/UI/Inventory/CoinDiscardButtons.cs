@@ -12,13 +12,6 @@ public class CoinDiscardButtons : MonoBehaviour
     public CoinDetail CoinDetail => coinDetail;
     void Start()
     {
-        foreach (var coinDiscardButton in coinDiscardButtons)
-        {
-            if (coinDiscardButton != null && coinDiscardButton.Coin != null)
-            {
-                coinToButtonMap[coinDiscardButton.Coin] = coinDiscardButton;
-            }
-        }
         InventoryManager.Instance.CoinInventory.OnCoinAdded += SetCoinDiscardButtonActivate;
         InventoryManager.Instance.CoinInventory.OnCoinRemoved += SetCoinDiscardButtonInactivate;
         Logger.Log("coinInventory action initialized");
@@ -26,13 +19,45 @@ public class CoinDiscardButtons : MonoBehaviour
     public void SetCoinDiscardButtonActivate(Coin coin)
     {
         Logger.Log("SetCoinDiscardButtonActivate called for coin: " + (coin != null ? $"{coin.FrontSideValue} / {coin.BackSideValue}" : "null"));
-        CoinDiscardButton coinDiscardButton = coinToButtonMap[coin];
+        if (coin == null)
+        {
+            return;
+        }
+
+        if (!coinToButtonMap.TryGetValue(coin, out CoinDiscardButton coinDiscardButton))
+        {
+            int index = InventoryManager.Instance.CoinInventory.IndexOf(coin);
+            if (index >= 0)
+            {
+                SetCoin(index, coin);
+                coinToButtonMap.TryGetValue(coin, out coinDiscardButton);
+            }
+        }
+
+        if (coinDiscardButton == null)
+        {
+            Logger.Log($"No discard button mapping found for coin: {coin.FrontSideValue} / {coin.BackSideValue}");
+            return;
+        }
+
         coinDiscardButton.SetButtonActive(true);
     }
     public void SetCoinDiscardButtonInactivate(Coin coin)
     {
         Logger.Log("SetCoinDiscardButtonInactivate called for coin: " + (coin != null ? $"{coin.FrontSideValue} / {coin.BackSideValue}" : "null"));
-        CoinDiscardButton coinDiscardButton = coinToButtonMap[coin];
+        if (coin == null)
+        {
+            return;
+        }
+
+        if (!coinToButtonMap.TryGetValue(coin, out CoinDiscardButton coinDiscardButton) || coinDiscardButton == null)
+        {
+            Logger.Log($"No discard button mapping found while inactivating: {coin.FrontSideValue} / {coin.BackSideValue}");
+            return;
+        }
+
+        coinToButtonMap.Remove(coin);
+        coinDiscardButton.Coin = null;
         coinDiscardButton.SetButtonActive(false);
     }
     public void SetCoin(int index, Coin coin)
@@ -40,7 +65,18 @@ public class CoinDiscardButtons : MonoBehaviour
         Logger.Log("CoinDiscardButtons.SetCoin called with index: " + index + " and coin: " + (coin != null ? $"{coin.FrontSideValue} / {coin.BackSideValue}" : "null"));
         if (index >= 0 && index < coinDiscardButtons.Count)
         {
-            coinDiscardButtons[index].Coin = coin;
+            CoinDiscardButton button = coinDiscardButtons[index];
+            Coin oldCoin = button.Coin;
+            if (oldCoin != null)
+            {
+                coinToButtonMap.Remove(oldCoin);
+            }
+
+            button.Coin = coin;
+            if (coin != null)
+            {
+                coinToButtonMap[coin] = button;
+            }
         }
     }
 
