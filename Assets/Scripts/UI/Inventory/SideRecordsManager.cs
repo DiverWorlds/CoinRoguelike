@@ -15,23 +15,17 @@ public class SideRecordsManager : MonoBehaviour
     void Start()
     {
         Logger.Log("SideRecordsManager Start");
-        //TODO: Debug
-        // for (int i = 0; i < 10; i++)
-        // {
-        //     BaseSide newSide = Instantiate(sidesPanel.SidesServer.GetRandomSide(1), InventoryManager.Instance.SideInventory.transform).GetComponent<BaseSide>();
-        //     newSide.Initialize(1, true);
-        //     Logger.Log($"side: {newSide.EffectName}");
-        //     InventoryManager.Instance.SideInventory.Add(newSide);
-        // }
         CreateAllRecords();
         InventoryManager.Instance.SideInventory.OnSideAdded += CreateRecord;
-        // InventoryManager.Instance.SideInventory.OnSideRemoved += RemoveRecord;
     }
 
     //TODO: 呼ぶ。Removeも
     public void CreateRecord(BaseSide side)
     {
+        if (side.FrontOrBack != sidePanel.FrontOrBack) return;
+        
         Logger.Log($"CreateRecord: {side.EffectName}");
+        Logger.Log($"This ui side is {sidePanel.FrontOrBack}");
         var record = Instantiate(sideRecordPrefab, transform, false);
         record.transform.localScale = sideRecordPrefab.transform.localScale;
         record.Initialize(side, this, sidesPanel);
