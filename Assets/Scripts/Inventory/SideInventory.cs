@@ -1,9 +1,18 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class SideInventory : MonoBehaviour
 {
+    private Action<BaseSide> onSideAdded;
+    private Action<BaseSide> onSideRemoved;
+
+    public event Action<BaseSide> OnSideAdded
+    { add { onSideAdded += value; } remove { onSideAdded -= value; } }
+    public event Action<BaseSide> OnSideRemoved
+    { add { onSideRemoved += value; } remove { onSideRemoved -= value; } }
+
     private List<BaseSide> sides = new List<BaseSide>();
 
 
@@ -11,10 +20,12 @@ public class SideInventory : MonoBehaviour
     {
         Logger.Log($"Add Side: {side.EffectName}");
         sides.Add(side);
+        onSideAdded?.Invoke(side);
     }
     public void Remove(BaseSide side)
     {
         sides.Remove(side);
+        onSideRemoved?.Invoke(side);
     }
 
     public List<BaseSide> GetSortedByStrength(FrontAndBack frontOrBack, bool isAscending)
