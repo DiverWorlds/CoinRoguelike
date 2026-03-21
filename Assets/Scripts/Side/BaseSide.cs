@@ -3,46 +3,31 @@ using UnityEngine;
 abstract public class BaseSide : MonoBehaviour
 {
     protected FrontAndBack frontOrBack;
+    [SerializeField] protected int[] baseStrengthOnRank = new int[5];
+    [SerializeField] protected int[] baseWeightOnRank = new int[5];
     protected int strength;
-    [SerializeField] protected int minStrength;
-    [SerializeField] protected int maxStrength;
     protected int weight;
-    [SerializeField] protected int minWeight;
-    [SerializeField] protected int maxWeight;
-    protected Rank rank;
     protected string effectName;
 
     public FrontAndBack FrontOrBack => frontOrBack;
     public int Strength => strength;
     public int Weight => weight;
-    public Rank Rank => rank;
     public string EffectName => effectName;
-    
+
 
     void Start()
     {
     }
-    public virtual void Initialize()
+    public virtual void Initialize(int currentStage, bool individualize)
     {
-        int randomizedStrength = CalcStrength() + Random.Range(-1, 2);
-        this.strength = Mathf.Clamp(randomizedStrength, minStrength, maxStrength);
+        int rank = (currentStage - 1) / 10 + 1;
+        strength = baseStrengthOnRank[rank - 1];//いったん数値にブレなし
+        if (individualize) weight = baseWeightOnRank[rank - 1] + Random.Range(-1, 1);//数値にブレあり（-1~1の範囲でブレる）
+        else weight = baseWeightOnRank[rank - 1];//数値にブレなし
 
-        int randomizedWeight = CalcWeight() + Random.Range(-1, 2);
-        this.weight = Mathf.Clamp(randomizedWeight, minWeight, maxWeight);
     }
-    public virtual void Effect(int value, Character target)
+    public virtual void Effect(int value, Character target, Character user)
     {
         return;
     }
-    private int CalcStrength()
-    {
-        //TODO: ちゃんと作る
-        return Mathf.RoundToInt((minStrength + maxStrength) / 2f);
-    }
-    private int CalcWeight()
-    {
-        //TODO: ちゃんと作る
-        return Mathf.RoundToInt((minWeight + maxWeight) / 2f);
-    }
-
 }

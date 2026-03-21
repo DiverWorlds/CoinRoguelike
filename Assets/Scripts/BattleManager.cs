@@ -31,16 +31,16 @@ public class BattleManager : MonoBehaviour
     //コインのボタンにアタッチする
     public void ExecutePlayerCoinEffect(int coinIndex)
     {
-        coinInventory.GetCoin(coinIndex).Effect(enemy);
+        coinInventory.GetCoin(coinIndex).Effect(enemy, player);
 
-       if(IsBattleContinued()) ProcessTurn();
+        if (IsBattleContinued()) ProcessTurn();
 
     }
 
     private void ExecuteEnemyAction()
     {
         enemy.Act(player);
-        if(IsBattleContinued()) ProcessTurn();
+        if (IsBattleContinued()) ProcessTurn();
     }
 
     private bool IsBattleContinued()

@@ -51,4 +51,14 @@ abstract public class Character : MonoBehaviour
     {
         return;
     }
+
+    public void TakeSleep(int turns)
+    {
+        SleepCounter = turns;
+    }
+
+    public void TakeHeal(int amount)
+    {
+        Heal(amount);
+    }
 }

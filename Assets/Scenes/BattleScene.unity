@@ -868,7 +868,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SidesCatalog
   sides:
   - {fileID: 6960922948262555482, guid: 5f9f25cf5a413435cbd37c59a5934c1c, type: 3}
+  - {fileID: -4630121590631701782, guid: 611d61b81312349bea0f16211c8d9218, type: 3}
+  - {fileID: -7544351887278993748, guid: 5ba5aeade2a86486f8d817ca14a26a3a, type: 3}
+  - {fileID: 3934068623131521052, guid: cdb7ba2caf37c4c12acfb0d5633925d2, type: 3}
   - {fileID: 6759463649446633106, guid: e1abf343f5e144275b69d377815076a1, type: 3}
+  - {fileID: -3483878295842988554, guid: a489fa958045d4011b1f5b6609e419e9, type: 3}
+  - {fileID: 2455280140428412191, guid: efb142ccecbe74add87da65665e4bf69, type: 3}
   sideInventory: {fileID: 336070861}
 --- !u!1001 &1358096930
 PrefabInstance:
@@ -90236,11 +90241,11 @@ PrefabInstance:
     - target: {fileID: 500360648056727524, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 00ef727e676c24059a39c547e25f2b2c, type: 2}
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 500360648056727524, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 3155316296918209328, guid: 00ef727e676c24059a39c547e25f2b2c, type: 2}
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 500360648056727524, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -90252,11 +90257,11 @@ PrefabInstance:
     - target: {fileID: 3246274576602400095, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 00ef727e676c24059a39c547e25f2b2c, type: 2}
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 3246274576602400095, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 3155316296918209328, guid: 00ef727e676c24059a39c547e25f2b2c, type: 2}
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 3246274576602400095, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
