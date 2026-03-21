@@ -67,10 +67,6 @@ abstract public class Enemy : Character
     {
         animator.SetTrigger("Reset");
     }
-    protected void PutToSleep(int turns)
-    {
-        SleepCounter = turns;
-    }
 }
 
 [Serializable]

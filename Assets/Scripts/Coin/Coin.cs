@@ -14,7 +14,7 @@ public class Coin : MonoBehaviour
     public float FrontSideProbability => frontSideProbability;
     public int FrontSideValue => frontSideValue;
     public int BackSideValue => backSideValue;
-    public float BackSideBonus => backSideBonus;
+    public float BackSideBonus => backSideBonus;//CoinFactoryですでにボーナス分が加算されているのでこれは参照用
 
     public void Initialize(BaseSide frontSide, BaseSide backSide, float frontSideProbability, int frontSideValue, int backSideValue, float backSideBonus)
     {
@@ -26,15 +26,15 @@ public class Coin : MonoBehaviour
         this.backSideBonus = backSideBonus;
     }
 
-    public void Effect(Character target)
+    public void Effect(Character target, Character user)
     {
         if (Random.value <= FrontSideProbability)
         {
-            frontSide.Effect(FrontSideValue, target);
+            frontSide.Effect(FrontSideValue, target, user);
         }
         else
         {
-            backSide.Effect(BackSideValue, target);
+            backSide.Effect(BackSideValue, target, user);
         }
     }
 }

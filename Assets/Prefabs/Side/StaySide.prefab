@@ -44,7 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3ad390bdf944b0c9c07760d3550506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StaySide
-  minStrength: 0
-  maxStrength: 0
-  minWeight: 1
-  maxWeight: 5
+  baseStrengthOnRank: 0000000000000000000000000000000000000000
+  baseWeightOnRank: 0300000004000000050000000600000007000000

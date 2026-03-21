@@ -45,7 +45,7 @@ public class DungeonManager : MonoBehaviour
 		Destroy(enemy.gameObject);
 		GameObject seSpeakerInstance = Instantiate(seSpeaker);
 		seSpeakerInstance.GetComponent<SESpeaker>().Play(victorySE);
-		sidesInventory.Add(sidesServer.GetRandomSide());
+		sidesInventory.Add(sidesServer.GetRandomSide(currentStage));
 		Invoke(nameof(StartNextStage), timeBetweenStages);
 	}
 	private bool StartNextStage()
