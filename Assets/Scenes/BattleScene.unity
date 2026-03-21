@@ -90086,7 +90086,7 @@ MonoBehaviour:
   coin1Slot: {fileID: 1793152063}
   coin2Slot: {fileID: 1924197260}
   coin3Slot: {fileID: 466616345}
-  previewSlot: {fileID: 2010774383}
+  previewSlot: {fileID: 2294537242425810751}
 --- !u!224 &1878710849 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2262737673633575208, guid: aa9a8386d13a24469ad318797530612c, type: 3}
@@ -90174,11 +90174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CoinDescriptionWindow
   background: {fileID: 1369389812}
   descriptionText: {fileID: 1202403130}
---- !u!224 &2010774383 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4009521611050934733, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
-  m_PrefabInstance: {fileID: 2294537242425810750}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2096287243 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8839196694374769764, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
@@ -90499,6 +90494,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+--- !u!224 &2294537242425810751 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1552303754209342354, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+  m_PrefabInstance: {fileID: 2294537242425810750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6975376224063564306
 PrefabInstance:
   m_ObjectHideFlags: 0

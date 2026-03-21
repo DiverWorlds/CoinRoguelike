@@ -12,6 +12,24 @@ public class CoinFactory : MonoBehaviour
 
 	public Coin CreatePreviewCoin(BaseSide side1, BaseSide side2)
 	{
+		if (previewSlot != null && previewSlot.childCount > 0)
+		{
+			for (int i = previewSlot.childCount - 1; i >= 0; i--)
+			{
+				Coin existingCoin = previewSlot.GetChild(i).GetComponent<Coin>();
+				if (existingCoin != null)
+				{
+					BaseSide[] sides = existingCoin.GetComponentsInChildren<BaseSide>();
+					foreach (BaseSide side in sides)
+					{
+						side.transform.SetParent(sideInventory.transform, false);
+					}
+
+					Destroy(existingCoin.gameObject);
+				}
+			}
+		}
+
 		return CreateCoinBase(side1, side2, previewSlot, false);
 	}
 	public void MoveToSlot(Coin coin)
