@@ -28,5 +28,6 @@ public class CoinCraftButton : MonoBehaviour
         }
     
         coinFactory.MoveToSlot(coinDetail.Coin);
+        coinDetail.Coin = null;
     }
 }

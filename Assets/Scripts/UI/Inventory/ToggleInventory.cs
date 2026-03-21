@@ -8,6 +8,8 @@ public class ToggleInventory : MonoBehaviour
     [SerializeField] private Image buttonImage;
     [SerializeField] private bool isOpenButton = false;
     [SerializeField] private ToggleInventory closeToggleInventory;
+    [SerializeField] private SideRecordsManager frontSideRecordsManager;
+    [SerializeField] private SideRecordsManager backSideRecordsManager;
     private GameObject inventoryCanvasObject;
 
     void Start()
@@ -43,5 +45,10 @@ public class ToggleInventory : MonoBehaviour
         }
 
         inventoryCanvas.gameObject.SetActive(isOpenButton);
+        if (!isOpenButton)
+        {
+            frontSideRecordsManager.UnselectRecord();
+            backSideRecordsManager.UnselectRecord();
+        }
     }
 }

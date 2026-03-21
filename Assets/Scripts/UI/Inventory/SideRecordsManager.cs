@@ -7,6 +7,7 @@ public class SideRecordsManager : MonoBehaviour
     [SerializeField] private SideRecord sideRecordPrefab;
     [SerializeField] private SidePanel sidePanel;
     [SerializeField] private SidesPanel sidesPanel;
+    [SerializeField] private CoinDetail previewCoinDetail;
     private SideRecord selectedRecord;
     public enum SortType { Strength, Weight }
     private List<SideRecord> records = new List<SideRecord>();
@@ -43,9 +44,27 @@ public class SideRecordsManager : MonoBehaviour
     public void SelectRecord(SideRecord record)
     {
         Logger.Log($"SelectRecord: {record.Side.EffectName}");
-        selectedRecord?.ToggleImageVisualize(false);
+        if (selectedRecord != null)
+        {
+            selectedRecord.ToggleImageVisualize(false);
+        }
         selectedRecord = record;
-        selectedRecord.ToggleImageVisualize(true);
+        if (selectedRecord != null)
+        {
+            selectedRecord.ToggleImageVisualize(true);
+        }
+    }
+    public void UnselectRecord()
+    {
+        if (selectedRecord == null) return;
+        Logger.Log("UnselectRecord");
+        Logger.Log($"Unselecting record: {selectedRecord.Side.EffectName}");
+        if (selectedRecord != null)
+        {
+            selectedRecord.ToggleImageVisualize(false);
+        }
+        selectedRecord = null;
+        if (previewCoinDetail.Coin != null) previewCoinDetail.Coin = null;
     }
     public void SortChildren(SortType type, bool ascending = true)
     {
@@ -83,6 +102,11 @@ public class SideRecordsManager : MonoBehaviour
         Logger.Log($"RemoveRecord: {record.Side.EffectName}");
         if (records.Contains(record))
         {
+            if (selectedRecord == record)
+            {
+                selectedRecord = null;
+                if (previewCoinDetail != null && previewCoinDetail.Coin != null) previewCoinDetail.Coin = null;
+            }
             records.Remove(record);
             Destroy(record.gameObject);
         }

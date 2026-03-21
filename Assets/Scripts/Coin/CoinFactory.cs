@@ -66,7 +66,7 @@ public class CoinFactory : MonoBehaviour
 			previewedRecords.RemoveAt(i);
 			if (record != null)
 			{
-				Destroy(record.gameObject);
+				record.ToggleImageVisualize(false);
 			}
 		}
 

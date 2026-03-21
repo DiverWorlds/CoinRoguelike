@@ -261,6 +261,8 @@ MonoBehaviour:
   buttonImage: {fileID: 5862495350219755740}
   isOpenButton: 0
   closeToggleInventory: {fileID: 0}
+  frontSideRecordsManager: {fileID: 2786093089099834935}
+  backSideRecordsManager: {fileID: 1281341916414027337}
 --- !u!1 &4654949154884887167
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +776,10 @@ PrefabInstance:
       propertyPath: sidesPanel
       value: 
       objectReference: {fileID: 4024785694643832797}
+    - target: {fileID: 7355561105289952125, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
+      propertyPath: previewCoinDetail
+      value: 
+      objectReference: {fileID: 8322725517506993940}
     - target: {fileID: 7526859013338417698, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -792,6 +798,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6904444244434225554, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
   m_PrefabInstance: {fileID: 4665169827257376074}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2786093089099834935 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7355561105289952125, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
+  m_PrefabInstance: {fileID: 4665169827257376074}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36535d28bbf05480e985ef868cdd8636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SideRecordsManager
 --- !u!114 &8137328746807326515 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3482296657294240377, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
@@ -991,6 +1008,10 @@ PrefabInstance:
       propertyPath: sidesPanel
       value: 
       objectReference: {fileID: 4024785694643832797}
+    - target: {fileID: 7355561105289952125, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
+      propertyPath: previewCoinDetail
+      value: 
+      objectReference: {fileID: 8322725517506993940}
     - target: {fileID: 7526859013338417698, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
       propertyPath: m_SizeDelta.y
       value: 374
@@ -1000,6 +1021,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
+--- !u!114 &1281341916414027337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7355561105289952125, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
+  m_PrefabInstance: {fileID: 8636794084147698996}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36535d28bbf05480e985ef868cdd8636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SideRecordsManager
 --- !u!224 &2886117968279737510 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6904444244434225554, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
