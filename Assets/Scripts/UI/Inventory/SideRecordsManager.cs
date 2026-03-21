@@ -6,6 +6,7 @@ public class SideRecordsManager : MonoBehaviour
 {
     [SerializeField] private BaseSide side;
     [SerializeField] private SideRecord sideRecordPrefab;
+    [SerializeField] private SidePanel sidesPanel;
     public enum SortType { Strength, Weight }
     private List<SideRecord> records = new List<SideRecord>();
     void Start()
@@ -34,8 +35,8 @@ public class SideRecordsManager : MonoBehaviour
     public void CreateAllRecords()
     {
         Logger.Log("CreateAllRecords");
-        Logger.LogElements(InventoryManager.Instance.SideInventory.GetByFrontOrBack(SidePanel.Instance.FrontOrBack).Select(s => s.EffectName));
-        foreach (var side in InventoryManager.Instance.SideInventory.GetByFrontOrBack(SidePanel.Instance.FrontOrBack))
+        Logger.LogElements(InventoryManager.Instance.SideInventory.GetByFrontOrBack(sidesPanel.FrontOrBack).Select(s => s.EffectName));
+        foreach (var side in InventoryManager.Instance.SideInventory.GetByFrontOrBack(sidesPanel.FrontOrBack))
         {
             CreateRecord(side);
         }

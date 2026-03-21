@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SidePanel : Singleton<SidePanel>
+public class SidePanel : MonoBehaviour
 {
     [SerializeField] private FrontAndBack frontOrBack;
     public FrontAndBack FrontOrBack => frontOrBack;

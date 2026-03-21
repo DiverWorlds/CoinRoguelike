@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 135589.5}
+  m_AnchoredPosition: {x: 0, y: 156604.02}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3870730847808095432
@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SideRecordsManager
   side: {fileID: 6960922948262555482, guid: 5f9f25cf5a413435cbd37c59a5934c1c, type: 3}
   sideRecordPrefab: {fileID: 399210461359355972, guid: e8e68d4c50b084f7d839e9c5f67894ac, type: 3}
+  sidesPanel: {fileID: 3482296657294240377}
 --- !u!1 &1432433950081710574
 GameObject:
   m_ObjectHideFlags: 0
