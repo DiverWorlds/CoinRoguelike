@@ -46,6 +46,6 @@ public class SidesPanel : MonoBehaviour
     }
     private void SetPreview()
     {
-        coinDetail.Coin = coinFactory.CreatePreviewCoin(selectedRecords[0].Side, selectedRecords[1].Side);
+        coinDetail.Coin = coinFactory.CreatePreviewCoin(selectedRecords[0], selectedRecords[1]);
     }
 }

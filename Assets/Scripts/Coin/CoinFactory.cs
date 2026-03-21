@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CoinFactory : MonoBehaviour
@@ -9,8 +10,9 @@ public class CoinFactory : MonoBehaviour
 	[SerializeField] private Transform coin2Slot;
 	[SerializeField] private Transform coin3Slot;
 	[SerializeField] private Transform previewSlot;
+	[SerializeField] private List<SideRecord> previewedRecords = new List<SideRecord>();
 
-	public Coin CreatePreviewCoin(BaseSide side1, BaseSide side2)
+	public Coin CreatePreviewCoin(SideRecord side1, SideRecord side2)
 	{
 		if (previewSlot != null && previewSlot.childCount > 0)
 		{
@@ -29,8 +31,10 @@ public class CoinFactory : MonoBehaviour
 				}
 			}
 		}
+		previewedRecords.Add(side1);
+		previewedRecords.Add(side2);
 
-		return CreateCoinBase(side1, side2, previewSlot, false);
+		return CreateCoinBase(side1.Side, side2.Side, previewSlot, false);
 	}
 	public void MoveToSlot(Coin coin)
 	{
@@ -55,6 +59,16 @@ public class CoinFactory : MonoBehaviour
 		coin.transform.SetParent(parentSlot, false);
 		coin.transform.localPosition = Vector3.zero;
 		coin.transform.localRotation = Quaternion.identity;
+
+		for (int i = previewedRecords.Count - 1; i >= 0; i--)
+		{
+			SideRecord record = previewedRecords[i];
+			previewedRecords.RemoveAt(i);
+			if (record != null)
+			{
+				Destroy(record.gameObject);
+			}
+		}
 
 		coinInventory.Add(coin);
 	}
