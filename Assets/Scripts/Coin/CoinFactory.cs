@@ -16,6 +16,14 @@ public class CoinFactory : MonoBehaviour
 
 	public Coin CreatePreviewCoin(SideRecord side1, SideRecord side2)
 	{
+		if (side1.Side.FrontOrBack == side2.Side.FrontOrBack)
+		{
+			Debug.LogError("Cannot create coin with two sides of the same type.");
+			return null;
+		}
+
+		SideRecord frontSideRecord = side1.Side.FrontOrBack == FrontAndBack.Front ? side1 : side2;
+		SideRecord backSideRecord = side1.Side.FrontOrBack == FrontAndBack.Back ? side1 : side2;
 		if (previewSlot != null && previewSlot.childCount > 0)
 		{
 			for (int i = previewSlot.childCount - 1; i >= 0; i--)
@@ -33,10 +41,10 @@ public class CoinFactory : MonoBehaviour
 				}
 			}
 		}
-		previewedRecords.Add(side1);
-		previewedRecords.Add(side2);
+		previewedRecords.Add(frontSideRecord);
+		previewedRecords.Add(backSideRecord);
 
-		return CreateCoinBase(side1.Side, side2.Side, previewSlot, false);
+		return CreateCoinBase(frontSideRecord.Side, backSideRecord.Side, previewSlot, false);
 	}
 	public void MoveToSlot(Coin coin)
 	{
@@ -98,6 +106,8 @@ public class CoinFactory : MonoBehaviour
 			Debug.LogWarning("Parent is not assigned. Coin creation was skipped.");
 			return null;
 		}
+		BaseSide frontSide = side1.FrontOrBack == FrontAndBack.Front ? side1 : side2;
+		BaseSide backSide = side1.FrontOrBack == FrontAndBack.Back ? side1 : side2;
 
 		Coin coinInstance = Instantiate(coinPrefab, parent, false);
 
@@ -106,12 +116,12 @@ public class CoinFactory : MonoBehaviour
 			coinInventory.Add(coinInstance);
 		}
 
-		float frontSideProbability = CalcFrontSideProbability(side1, side2);
+		float frontSideProbability = CalcFrontSideProbability(frontSide, backSide);
 		float backSideBonus = CalcBackSideBonus(frontSideProbability);
-		int frontSideValue = CalcFrontSideValue(side1, backSideBonus);
-		int backSideValue = CalcBackSideValue(side2);
+		int frontSideValue = CalcFrontSideValue(frontSide, backSideBonus);
+		int backSideValue = CalcBackSideValue(backSide);
 
-		coinInstance.Initialize(side1, side2, frontSideProbability, frontSideValue, backSideValue, backSideBonus);
+		coinInstance.Initialize(frontSide, backSide, frontSideProbability, frontSideValue, backSideValue, backSideBonus);
 
 		side1.transform.SetParent(coinInstance.transform, false);
 		side2.transform.SetParent(coinInstance.transform, false);
