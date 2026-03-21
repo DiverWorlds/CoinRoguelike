@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class CoinFactory : MonoBehaviour
 	[SerializeField] private Transform coin3Slot;
 	[SerializeField] private Transform previewSlot;
 	[SerializeField] private List<SideRecord> previewedRecords = new List<SideRecord>();
+	[SerializeField] private float BonusMagnification = 3;
 
 	public Coin CreatePreviewCoin(SideRecord side1, SideRecord side2)
 	{
@@ -159,7 +161,9 @@ public class CoinFactory : MonoBehaviour
 	private int CalcFrontSideValue(BaseSide frontSide, float backSideBonus)
 	{
 		//丸め込み
-		return Mathf.RoundToInt(frontSide.Strength * backSideBonus);
+		Logger.Log("CalcBonusFrontSideName: " + frontSide.EffectName);
+		if (frontSide.EffectName != "睡眠") return Mathf.RoundToInt(frontSide.Strength * backSideBonus);
+		else return Mathf.RoundToInt(frontSide.Strength);
 	}
 
 	private int CalcBackSideValue(BaseSide backSide)
@@ -170,6 +174,6 @@ public class CoinFactory : MonoBehaviour
 	private float CalcBackSideBonus(float frontSideProbability)
 	{
 		//1 + (1 - frontSideProbability) みたいな感じで、表の出る確率が低いほど裏のボーナスが高くなる
-		return 2 - frontSideProbability;
+		return (2 - frontSideProbability) * BonusMagnification;
 	}
 }
