@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 868224617}
   - component: {fileID: 868224623}
   - component: {fileID: 868224624}
+  - component: {fileID: 868224625}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -580,6 +581,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   player: {fileID: 868224623}
   stageMoveDistance: 3
+--- !u!114 &868224625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868224611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9ad2b5a76584c409cd5cafd7fd8b42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DungeonConstructor
+  levelPrefab: {fileID: 2108341172135473776, guid: e0f2d495bb8884799b283a4aa49c703a, type: 3}
+  currentLevel: {fileID: 0}
+  pastLevel: {fileID: 0}
+  firstLevel: {fileID: 0}
+  firstPositionAjustment: {x: 0, y: 0, z: 10}
 --- !u!1 &1076728075
 GameObject:
   m_ObjectHideFlags: 0
@@ -90087,6 +90105,7 @@ MonoBehaviour:
   coin2Slot: {fileID: 1924197260}
   coin3Slot: {fileID: 466616345}
   previewSlot: {fileID: 2294537242425810751}
+  BonusMagnification: 2
 --- !u!224 &1878710849 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2262737673633575208, guid: aa9a8386d13a24469ad318797530612c, type: 3}

@@ -229,7 +229,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 6bc52d0edcbc94ceb8a21bd74fbf1ca5, type: 2}
     - {fileID: 11400000, guid: 21c4db6c684784380aba77f8a3f8bba7, type: 2}
     - {fileID: 11400000, guid: 6bc52d0edcbc94ceb8a21bd74fbf1ca5, type: 2}
-  maxLifesOnRank: 0f0000001e0000005a000000fa0000005e010000
+  maxLifesOnRank: 1e0000003c0000005a000000780000002c010000
   currentSprite: {fileID: 0}
   mimicSprites:
   - {fileID: 21300000, guid: d8e82df50bc5a47c49c9431a8ce5c087, type: 3}

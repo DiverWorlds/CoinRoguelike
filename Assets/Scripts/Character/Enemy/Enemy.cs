@@ -15,12 +15,15 @@ abstract public class Enemy : Character
 
     public void Initialize(int currentStage)
     {
-        //敵のHPに若干のブレを加える。ブレの幅は最大HPの5%ほどにする。
-        MaxLife = maxLifesOnRank[currentRank - 1] + UnityEngine.Random.Range(-maxLifesOnRank[currentRank - 1] / 20, maxLifesOnRank[currentRank - 1] / 20);
+        //最初にランクを設定
         this.currentRank = (currentStage - 1) / 10 + 1;
         if (currentRank > 5) currentRank = 5;
+
+        //敵のHPに若干のブレを加える。ブレの幅は最大HPの5%ほどにする。
+        MaxLife = maxLifesOnRank[currentRank - 1] + UnityEngine.Random.Range(-maxLifesOnRank[currentRank - 1] / 20, maxLifesOnRank[currentRank - 1] / 20);
         animator = GetComponent<Animator>();
         SetNextSkill();
+        Logger.Log("currentStage" + currentStage + " currentRank" + currentRank);
     }
 
     public void SetNextSkill()
