@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Collider2D))]
 public class CoinUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-	private CointosEffect cointosEffect;
 	private CoinDescriptionWindow coinDescriptionWindow;
 	private BattleManager battleManager;
 	private CoinInventory coinInventory;
@@ -17,7 +16,6 @@ public class CoinUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 		coinDescriptionWindow = FindFirstObjectByType<CoinDescriptionWindow>();
 		battleManager = FindFirstObjectByType<BattleManager>();
 		Player player = FindFirstObjectByType<Player>();
-		cointosEffect = FindFirstObjectByType<CointosEffect>();
 		exitManager = FindFirstObjectByType<ExitManager>();
 		dungeonManager = FindFirstObjectByType<DungeonManager>();
 		coinInventory = player.CoinInventory;
@@ -46,8 +44,6 @@ public class CoinUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 		{
 			exitManager.HideExit();
 		}
-		exitManager.HideExit();
-		cointosEffect.ResultFront();
 		int coinIndex = coinInventory.IndexOf(coin);
 		battleManager.ExecutePlayerCoinEffect(coinIndex);
 	}

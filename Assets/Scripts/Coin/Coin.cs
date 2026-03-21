@@ -8,6 +8,7 @@ public class Coin : MonoBehaviour
     private int frontSideValue;
     private int backSideValue;
     private float backSideBonus;
+    private CointosEffect cointosEffect;
 
     public string FrontEffectName => frontSide.EffectName;
     public string BackEffectName => backSide.EffectName;
@@ -24,16 +25,19 @@ public class Coin : MonoBehaviour
         this.frontSideValue = frontSideValue;
         this.backSideValue = backSideValue;
         this.backSideBonus = backSideBonus;
+        cointosEffect = FindFirstObjectByType<CointosEffect>();
     }
 
     public void Effect(Character target, Character user)
     {
         if (Random.value <= FrontSideProbability)
         {
+            cointosEffect.ResultFront();
             frontSide.Effect(FrontSideValue, target, user);
         }
         else
         {
+            cointosEffect.ResultBack();
             backSide.Effect(BackSideValue, target, user);
         }
     }
