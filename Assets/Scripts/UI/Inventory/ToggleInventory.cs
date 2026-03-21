@@ -17,11 +17,31 @@ public class ToggleInventory : MonoBehaviour
     }
     void Update()
     {
-        if (isOpenButton) buttonImage.enabled = !inventoryCanvasObject.activeSelf;
+        if (!isOpenButton)
+        {
+            return;
+        }
+
+        if (inventoryCanvasObject == null)
+        {
+            inventoryCanvasObject = inventoryCanvas != null ? inventoryCanvas.gameObject : null;
+        }
+
+        if (inventoryCanvasObject == null)
+        {
+            return;
+        }
+
+        buttonImage.enabled = !inventoryCanvasObject.activeSelf;
     }
 
     public void OnClick()
     {
+        if (inventoryCanvas == null)
+        {
+            return;
+        }
+
         inventoryCanvas.gameObject.SetActive(isOpenButton);
     }
 }

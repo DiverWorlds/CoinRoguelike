@@ -22,6 +22,11 @@ public class CoinDetail : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        SetCoinDetail();
+    }
+
     private void SetCoinDetail()
     {
         Logger.Log("SetCoinDetail called)");

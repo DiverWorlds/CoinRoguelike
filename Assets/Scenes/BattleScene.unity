@@ -90086,6 +90086,7 @@ MonoBehaviour:
   coin1Slot: {fileID: 1793152063}
   coin2Slot: {fileID: 1924197260}
   coin3Slot: {fileID: 466616345}
+  previewSlot: {fileID: 2010774383}
 --- !u!224 &1878710849 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2262737673633575208, guid: aa9a8386d13a24469ad318797530612c, type: 3}
@@ -90173,6 +90174,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CoinDescriptionWindow
   background: {fileID: 1369389812}
   descriptionText: {fileID: 1202403130}
+--- !u!224 &2010774383 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4009521611050934733, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+  m_PrefabInstance: {fileID: 2294537242425810750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2096287243 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8839196694374769764, guid: be25376eeb1c6498da38ea8c434fe78b, type: 3}
@@ -90448,6 +90454,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4024785694643832797, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: coinFactory
+      value: 
+      objectReference: {fileID: 1860301691}
+    - target: {fileID: 4024785694643832797, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: sidesServer
+      value: 
+      objectReference: {fileID: 1309242924}
     - target: {fileID: 4854430839530927522, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

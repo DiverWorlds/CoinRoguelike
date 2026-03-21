@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SideRecordsManager : MonoBehaviour
 {
-    [SerializeField] private BaseSide side;
     [SerializeField] private SideRecord sideRecordPrefab;
-    [SerializeField] private SidePanel sidesPanel;
+    [SerializeField] private SidePanel sidePanel;
+    [SerializeField] private SidesPanel sidesPanel;
     private SideRecord selectedRecord;
     public enum SortType { Strength, Weight }
     private List<SideRecord> records = new List<SideRecord>();
@@ -16,10 +16,10 @@ public class SideRecordsManager : MonoBehaviour
     {
         Logger.Log("SideRecordsManager Start");
         //TODO: Debug
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
-            BaseSide newSide = Instantiate(side.gameObject, InventoryManager.Instance.SideInventory.transform).GetComponent<BaseSide>();
-            newSide.Initialize();
+            BaseSide newSide = Instantiate(sidesPanel.SidesServer.GetRandomSide(1), InventoryManager.Instance.SideInventory.transform).GetComponent<BaseSide>();
+            newSide.Initialize(1, true);
             Logger.Log($"side: {newSide.EffectName}");
             InventoryManager.Instance.SideInventory.Add(newSide);
         }
@@ -32,14 +32,14 @@ public class SideRecordsManager : MonoBehaviour
         Logger.Log($"CreateRecord: {side.EffectName}");
         var record = Instantiate(sideRecordPrefab, transform, false);
         record.transform.localScale = sideRecordPrefab.transform.localScale;
-        record.Initialize(side, this);
+        record.Initialize(side, this, sidesPanel);
         records.Add(record);
     }
     public void CreateAllRecords()
     {
         Logger.Log("CreateAllRecords");
-        Logger.LogElements(InventoryManager.Instance.SideInventory.GetByFrontOrBack(sidesPanel.FrontOrBack).Select(s => s.EffectName));
-        foreach (var side in InventoryManager.Instance.SideInventory.GetByFrontOrBack(sidesPanel.FrontOrBack))
+        Logger.LogElements(InventoryManager.Instance.SideInventory.GetByFrontOrBack(sidePanel.FrontOrBack).Select(s => s.EffectName));
+        foreach (var side in InventoryManager.Instance.SideInventory.GetByFrontOrBack(sidePanel.FrontOrBack))
         {
             CreateRecord(side);
         }

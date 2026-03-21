@@ -8,14 +8,14 @@ public class CoinFactory : MonoBehaviour
 	[SerializeField] private Transform coin1Slot;
 	[SerializeField] private Transform coin2Slot;
 	[SerializeField] private Transform coin3Slot;
+	[SerializeField] private Transform previewSlot;
 
+	public Coin CreatePreviewCoin(BaseSide side1, BaseSide side2)
+	{
+		return CreateCoinBase(side1, side2, previewSlot, false);
+	}
 	public Coin CreateCoin(BaseSide side1, BaseSide side2)
 	{
-		if (side1.FrontOrBack == side2.FrontOrBack)
-		{
-			Debug.LogError("Cannot create coin with two sides of the same type.");
-			return null;
-		}
 		int targetIndex = coinInventory.CoinCount;
 		Transform parentSlot = GetSlotByIndex(targetIndex);
 		if (parentSlot == null)
@@ -24,9 +24,27 @@ public class CoinFactory : MonoBehaviour
 			return null;
 		}
 
-		Coin coinInstance = Instantiate(coinPrefab, parentSlot, false);
+		return CreateCoinBase(side1, side2, parentSlot, true);
+	}
+	private Coin CreateCoinBase(BaseSide side1, BaseSide side2, Transform parent, bool addToInventory)
+	{
+		if (side1.FrontOrBack == side2.FrontOrBack)
+		{
+			Debug.LogError("Cannot create coin with two sides of the same type.");
+			return null;
+		}
+		if (parent == null)
+		{
+			Debug.LogWarning("Parent is not assigned. Coin creation was skipped.");
+			return null;
+		}
 
-		coinInventory.Add(coinInstance);
+		Coin coinInstance = Instantiate(coinPrefab, parent, false);
+
+		if (addToInventory)
+		{
+			coinInventory.Add(coinInstance);
+		}
 
 		float frontSideProbability = CalcFrontSideProbability(side1, side2);
 		float backSideBonus = CalcBackSideBonus(frontSideProbability);

@@ -429,8 +429,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe73b37826564768b21bd1cbd9cf390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  coinDetail: {fileID: 8322725517506993940}
   frontPanel: {fileID: 8137328746807326515}
   backPanel: {fileID: 5156503005052024653}
+  coinFactory: {fileID: 0}
+  sidesServer: {fileID: 0}
 --- !u!1001 &560354113764404007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -539,6 +542,30 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5354145967100522580, guid: bc87c8f57a3b54a079bb7663fb2d63ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567908303655607879, guid: bc87c8f57a3b54a079bb7663fb2d63ed, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567908303655607879, guid: bc87c8f57a3b54a079bb7663fb2d63ed, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567908303655607879, guid: bc87c8f57a3b54a079bb7663fb2d63ed, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567908303655607879, guid: bc87c8f57a3b54a079bb7663fb2d63ed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567908303655607879, guid: bc87c8f57a3b54a079bb7663fb2d63ed, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -27
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -560,6 +587,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57ede303801a473fbd1cd3ba9be44ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinDiscardButtons
+--- !u!114 &8322725517506993940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8378531335791080499, guid: bc87c8f57a3b54a079bb7663fb2d63ed, type: 3}
+  m_PrefabInstance: {fileID: 560354113764404007}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d9821441cad4c7eb435f33da932fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinDetail
 --- !u!1001 &4665169827257376074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -732,6 +770,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7355561105289952125, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
+      propertyPath: sidesPanel
+      value: 
+      objectReference: {fileID: 4024785694643832797}
     - target: {fileID: 7526859013338417698, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -945,6 +987,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7355561105289952125, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
+      propertyPath: sidesPanel
+      value: 
+      objectReference: {fileID: 4024785694643832797}
     - target: {fileID: 7526859013338417698, guid: 8da15b9fae53f4480a695fecf5e7b120, type: 3}
       propertyPath: m_SizeDelta.y
       value: 374

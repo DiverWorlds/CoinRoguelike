@@ -10,22 +10,25 @@ public class SideRecord : MonoBehaviour
     [SerializeField] private Image backgroundImage;
     private SideRecordsManager sideRecordsmanager;
     private BaseSide side;
+    private SidesPanel sidesPanel;
 
     public BaseSide Side => side;
 
-    public void Initialize(BaseSide side, SideRecordsManager manager)
+    public void Initialize(BaseSide side, SideRecordsManager manager, SidesPanel sidesPanel)
     {
         this.side = side;
         nameText.text = side.EffectName;
         strengthText.text = side.Strength.ToString();
         weightText.text = side.Weight.ToString();
         this.sideRecordsmanager = manager;
+        this.sidesPanel = sidesPanel;
     }
 
     public void OnClick()
     {
         Logger.Log($"Clicked on {side.EffectName}, Strength: {side.Strength}, Weight: {side.Weight}");
         sideRecordsmanager.SelectRecord(this);
+        sidesPanel.AddSelectedRecord(this);
     }
     public void ToggleImageVisualize(bool enabled)
     {
