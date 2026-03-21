@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 868224617}
   - component: {fileID: 868224623}
   - component: {fileID: 868224624}
+  - component: {fileID: 868224625}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -580,6 +581,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   player: {fileID: 868224623}
   stageMoveDistance: 3
+--- !u!114 &868224625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868224611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9ad2b5a76584c409cd5cafd7fd8b42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DungeonConstructor
+  levelPrefab: {fileID: 2108341172135473776, guid: e0f2d495bb8884799b283a4aa49c703a, type: 3}
+  currentLevel: {fileID: 0}
+  pastLevel: {fileID: 0}
+  firstLevel: {fileID: 0}
+  firstPositionAjustment: {x: 0, y: 0, z: 10}
 --- !u!1 &1076728075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,6 +1386,7 @@ MonoBehaviour:
   button: {fileID: 1727670525}
   buttonImage: {fileID: 1727670526}
   isOpenButton: 1
+  closeToggleInventory: {fileID: 0}
 --- !u!114 &1727670525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90085,6 +90104,8 @@ MonoBehaviour:
   coin1Slot: {fileID: 1793152063}
   coin2Slot: {fileID: 1924197260}
   coin3Slot: {fileID: 466616345}
+  previewSlot: {fileID: 2294537242425810751}
+  BonusMagnification: 2
 --- !u!224 &1878710849 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2262737673633575208, guid: aa9a8386d13a24469ad318797530612c, type: 3}
@@ -90363,6 +90384,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 498343496811482308, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 498343496811482308, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 662263251273002596, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
       propertyPath: coinInventory
       value: 
@@ -90415,11 +90444,80 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2281293188543698710, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2939378694582441832, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2939378694582441832, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00034117894
+      objectReference: {fileID: 0}
+    - target: {fileID: 3435688487641266120, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: coinFactory
+      value: 
+      objectReference: {fileID: 1860301691}
+    - target: {fileID: 3569231953322921146, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569231953322921146, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569231953322921146, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024785694643832797, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: coinFactory
+      value: 
+      objectReference: {fileID: 1860301691}
+    - target: {fileID: 4024785694643832797, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: sidesServer
+      value: 
+      objectReference: {fileID: 1309242924}
+    - target: {fileID: 4854430839530927522, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4854430839530927522, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4854430839530927522, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375686405764642268, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375686405764642268, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375686405764642268, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8613060257263035914, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+--- !u!224 &2294537242425810751 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1552303754209342354, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+  m_PrefabInstance: {fileID: 2294537242425810750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6975376224063564306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90542,6 +90640,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8207924694570026661, guid: aa9a8386d13a24469ad318797530612c, type: 3}
       propertyPath: player
+      value: 
+      objectReference: {fileID: 868224623}
+    - target: {fileID: 8207924694570026661, guid: aa9a8386d13a24469ad318797530612c, type: 3}
+      propertyPath: character
       value: 
       objectReference: {fileID: 868224623}
     m_RemovedComponents: []

@@ -1,3 +1,4 @@
+// 注意: Start()より前で呼ぶと自己破壊してしまう
 using UnityEngine;
 public class Singleton<T> : MonoBehaviour where T : Component
 {
@@ -44,6 +45,7 @@ public class Singleton<T> : MonoBehaviour where T : Component
         }
         else
         {
+            Logger.Log($"Duplicate instance of {typeof(T).Name} found. Destroying the new one.");
             Destroy(gameObject);
         }
     }
