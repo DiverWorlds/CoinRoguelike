@@ -12,6 +12,8 @@ abstract public class Enemy : Character
     public EnemySkillData NextSkill => nextSkill;
     private int currentRank = 1;
     protected Animator animator;
+    private bool isAnimationPlaying;
+    public bool IsAnimationPlaying => isAnimationPlaying;
 
     public void Initialize(int currentStage)
     {
@@ -47,6 +49,7 @@ abstract public class Enemy : Character
         target.TakeDamage(skillData.power);
         if (skillData.power != 0)
         {
+            isAnimationPlaying = true;
             animator.SetTrigger("Attack");
         }
 
@@ -65,6 +68,7 @@ abstract public class Enemy : Character
     //Animationから呼ばれる
     public void ResetAnimation()
     {
+        isAnimationPlaying = false;
         animator.SetTrigger("Reset");
     }
 }

@@ -31,6 +31,7 @@ public class DungeonConstructor : MonoBehaviour
     /// <param name="easing">使用するイージングタイプ</param>
     public void StartMoving(Vector3 startPos, Vector3 endPos, float duration, EasingType easing)
     {
+        Logger.Log("startPos: " + startPos + ", endPos: " + endPos + ", duration: " + duration + ", easing: " + easing);
         StartCoroutine(MoveRoutine(startPos, endPos, duration, easing));
     }
 
@@ -114,6 +115,6 @@ public class DungeonConstructor : MonoBehaviour
     {
         firstLevel = Instantiate(levelPrefab, transform.position + firstPositionAjustment + Vector3.back * 5f, Quaternion.identity);
         currentLevel = Instantiate(levelPrefab, transform.position + firstPositionAjustment, Quaternion.identity);
-        ProceedDungeon();
+        // ProceedDungeon();
     }
 }
