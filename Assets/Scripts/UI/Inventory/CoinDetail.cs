@@ -49,6 +49,6 @@ public class CoinDetail : MonoBehaviour
         backStrengthText.text = $"{coin.BackSideValue}";
         frontProbabilityText.text = $"{coin.FrontSideProbability * 100f:F1}%";
         backProbabilityText.text = $"{(1-coin.FrontSideProbability) * 100f:F1}%";
-        if (bonusText != null) bonusText.text = $"入れる";
+        if (bonusText != null) bonusText.text = $"ウラ面ボーナス x {coin.BackSideBonus:F2}";
     }
 }
