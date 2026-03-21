@@ -8,15 +8,24 @@ public class SideRecord : MonoBehaviour
     [SerializeField] private TextMeshProUGUI strengthText;
     [SerializeField] private TextMeshProUGUI weightText;
     [SerializeField] private Image backgroundImage;
+    [SerializeField] private Image iconImage;
+    [SerializeField] private Sprite frontIconSprite;
+    [SerializeField] private Sprite backIconSprite;
+    private FrontAndBack frontOrBack;
+    void Start()
+    {
+        iconImage.sprite = frontOrBack == FrontAndBack.Front ? frontIconSprite : backIconSprite;
+    }
     private SideRecordsManager sideRecordsmanager;
     private BaseSide side;
     private SidesPanel sidesPanel;
 
     public BaseSide Side => side;
 
-    public void Initialize(BaseSide side, SideRecordsManager manager, SidesPanel sidesPanel)
+    public void Initialize(BaseSide side, SideRecordsManager manager, SidesPanel sidesPanel, FrontAndBack frontOrBack)
     {
         this.side = side;
+        this.frontOrBack = frontOrBack;
         nameText.text = side.EffectName;
         strengthText.text = side.Strength.ToString();
         weightText.text = side.Weight.ToString();

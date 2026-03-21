@@ -539,6 +539,10 @@ MonoBehaviour:
   strengthText: {fileID: 4925849723547033489}
   weightText: {fileID: 4180824801590469480}
   backgroundImage: {fileID: 8059349187291813729}
+  iconImage: {fileID: 4287289840331249819}
+  frontIconSprite: {fileID: 21300000, guid: 19755eb73bfbb4542a2928c46321de58, type: 3}
+  backIconSprite: {fileID: 21300000, guid: 6ca72ae69da7d4bd28b7c878b38ce68f, type: 3}
+  frontOrBack: 0
 --- !u!1 &5792688164707350601
 GameObject:
   m_ObjectHideFlags: 0

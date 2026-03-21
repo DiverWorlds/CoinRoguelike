@@ -23,12 +23,12 @@ public class SideRecordsManager : MonoBehaviour
     public void CreateRecord(BaseSide side)
     {
         if (side.FrontOrBack != sidePanel.FrontOrBack) return;
-        
+
         Logger.Log($"CreateRecord: {side.EffectName}");
         Logger.Log($"This ui side is {sidePanel.FrontOrBack}");
         var record = Instantiate(sideRecordPrefab, transform, false);
         record.transform.localScale = sideRecordPrefab.transform.localScale;
-        record.Initialize(side, this, sidesPanel);
+        record.Initialize(side, this, sidesPanel, sidePanel.FrontOrBack);
         records.Add(record);
     }
     public void CreateAllRecords()
