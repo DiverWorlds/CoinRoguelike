@@ -90442,6 +90442,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.00034117894
       objectReference: {fileID: 0}
+    - target: {fileID: 3435688487641266120, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: coinFactory
+      value: 
+      objectReference: {fileID: 1860301691}
     - target: {fileID: 3569231953322921146, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

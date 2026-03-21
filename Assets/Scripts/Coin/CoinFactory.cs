@@ -14,6 +14,32 @@ public class CoinFactory : MonoBehaviour
 	{
 		return CreateCoinBase(side1, side2, previewSlot, false);
 	}
+	public void MoveToSlot(Coin coin)
+	{
+		if (coin == null)
+		{
+			return;
+		}
+
+		if (coinInventory.IndexOf(coin) >= 0)
+		{
+			return;
+		}
+
+		int targetIndex = coinInventory.CoinCount;
+		Transform parentSlot = GetSlotByIndex(targetIndex);
+		if (parentSlot == null)
+		{
+			Debug.LogWarning($"Coin slot is not assigned for index {targetIndex}. Coin move was skipped.");
+			return;
+		}
+
+		coin.transform.SetParent(parentSlot, false);
+		coin.transform.localPosition = Vector3.zero;
+		coin.transform.localRotation = Quaternion.identity;
+
+		coinInventory.Add(coin);
+	}
 	public Coin CreateCoin(BaseSide side1, BaseSide side2)
 	{
 		int targetIndex = coinInventory.CoinCount;

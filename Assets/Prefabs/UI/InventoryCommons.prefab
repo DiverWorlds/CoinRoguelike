@@ -50,8 +50,9 @@ GameObject:
   - component: {fileID: 1868726544686226825}
   - component: {fileID: 4843986748803073483}
   - component: {fileID: 6071554185940051908}
+  - component: {fileID: 2911791980534734063}
   m_Layer: 0
-  m_Name: CraftButton
+  m_Name: CoinCraftButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,6 +159,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2911791980534734063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455044917018799851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f76c6f9c4d7427481b7fd3d6646ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  button: {fileID: 6071554185940051908}
+  buttonImage: {fileID: 4843986748803073483}
+  enableSprite: {fileID: 21300000, guid: 964027a2142f44d33ba77a6673b90097, type: 3}
+  disableSprite: {fileID: 21300000, guid: ba1cf880e4be64edca04a981a0e47038, type: 3}
+  coinDetail: {fileID: 8378531335791080499}
+  coinFactory: {fileID: 0}
 --- !u!1 &1709165813065754242
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +922,17 @@ PrefabInstance:
       addedObject: {fileID: 1722782896343548467}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31e5414cc587f40468560da40d03f19d, type: 3}
+--- !u!114 &8378531335791080499 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5924873135169399994, guid: 31e5414cc587f40468560da40d03f19d, type: 3}
+  m_PrefabInstance: {fileID: 2774188106302658697}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d9821441cad4c7eb435f33da932fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinDetail
 --- !u!224 &9201140885718027044 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6471357657365304237, guid: 31e5414cc587f40468560da40d03f19d, type: 3}
