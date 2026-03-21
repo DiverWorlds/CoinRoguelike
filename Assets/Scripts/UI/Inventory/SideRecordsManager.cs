@@ -7,13 +7,16 @@ public class SideRecordsManager : MonoBehaviour
     [SerializeField] private BaseSide side;
     [SerializeField] private SideRecord sideRecordPrefab;
     [SerializeField] private SidePanel sidesPanel;
+    private SideRecord selectedRecord;
     public enum SortType { Strength, Weight }
     private List<SideRecord> records = new List<SideRecord>();
+    public SideRecord SelectedRecord { get; set; }
+
     void Start()
     {
         Logger.Log("SideRecordsManager Start");
-        // Debug
-        for (int i=0; i<5; i++)
+        //TODO: Debug
+        for (int i = 0; i < 5; i++)
         {
             BaseSide newSide = Instantiate(side.gameObject, InventoryManager.Instance.SideInventory.transform).GetComponent<BaseSide>();
             newSide.Initialize();
@@ -29,7 +32,7 @@ public class SideRecordsManager : MonoBehaviour
         Logger.Log($"CreateRecord: {side.EffectName}");
         var record = Instantiate(sideRecordPrefab, transform, false);
         record.transform.localScale = sideRecordPrefab.transform.localScale;
-        record.Initialize(side);
+        record.Initialize(side, this);
         records.Add(record);
     }
     public void CreateAllRecords()
@@ -40,6 +43,13 @@ public class SideRecordsManager : MonoBehaviour
         {
             CreateRecord(side);
         }
+    }
+    public void SelectRecord(SideRecord record)
+    {
+        Logger.Log($"SelectRecord: {record.Side.EffectName}");
+        selectedRecord?.ToggleImageVisualize(false);
+        selectedRecord = record;
+        selectedRecord.ToggleImageVisualize(true);
     }
     public void SortChildren(SortType type, bool ascending = true)
     {
@@ -84,7 +94,7 @@ public class SideRecordsManager : MonoBehaviour
     public void RemoveAllRecords()
     {
         Logger.Log("RemoveAllRecords");
-        foreach ( var record in records)
+        foreach (var record in records)
         {
             RemoveRecord(record);
         }
