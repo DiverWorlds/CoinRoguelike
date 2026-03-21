@@ -13,7 +13,7 @@ public class DungeonManager : MonoBehaviour
 	[SerializeField] private DungeonConstructor dungeonConstructor;
 	[SerializeField] private ExitManager exitManager;
 	[SerializeField] private int allowClearStage = 50;
-	[SerializeField] private float timeBetweenStages = 0.3f;
+	[SerializeField] private float timeBetweenStages = 0.5f;
 	[SerializeField] private int dropSidesCount = 2;
 	private int currentStage = 1;
 	private Enemy enemy;

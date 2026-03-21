@@ -42,6 +42,7 @@ public class CoinUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
+		if (EnemyParent.Instance.Enemy == null) return;
 		if (dungeonConstructor != null && dungeonConstructor.IsMoving) return;
 		if (EnemyParent.Instance.Enemy.IsAnimationPlaying) return;
 		if (dungeonManager.CurrentStage % 10 == 1)
