@@ -11,7 +11,7 @@ public class ScoreManager : DontDestroySingleton<ScoreManager>
         {
             highScore = this.currentScore;
 
-            //ハイスコア更新の処理？バトル中であれば一度だけ呼べれば十分か
+            //TODO: ハイスコア更新の処理？バトル中であれば一度だけ呼べれば十分か
             if (isNotified)
             {
                 NotifyHighScoreChanged();
@@ -26,7 +26,7 @@ public class ScoreManager : DontDestroySingleton<ScoreManager>
     }
     public void NotifyHighScoreChanged()
     {
-        //ハイスコアが更新されたときの処理
+        //TODO: ハイスコアが更新されたときの処理
         Logger.Log("New High Score: " + highScore);
     }
 }

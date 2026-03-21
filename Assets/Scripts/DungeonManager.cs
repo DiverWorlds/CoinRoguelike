@@ -11,6 +11,8 @@ public class DungeonManager : MonoBehaviour
 	[SerializeField] private SideInventory sidesInventory;
 	[SerializeField] private CallEnemiesManager callEnemiesManager;
 	[SerializeField] private DungeonConstructor dungeonConstructor;
+	[SerializeField] private ExitManager exitManager;
+	[SerializeField] private int allowClearStage = 50;
 	[SerializeField] private float timeBetweenStages = 0.3f;
 	[SerializeField] private int dropSidesCount = 2;
 	private int currentStage = 1;
@@ -53,6 +55,10 @@ public class DungeonManager : MonoBehaviour
 	}
 	private bool StartNextStage()
 	{
+		if (currentStage >= allowClearStage && currentStage % 10 == 0)
+		{
+			exitManager.ShowExit();
+		}
 		currentStage++;
 		Logger.Log("Call ProceedDungeon");
 		dungeonConstructor.ProceedDungeon();

@@ -8,6 +8,8 @@ public class CoinUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 	private CoinDescriptionWindow coinDescriptionWindow;
 	private BattleManager battleManager;
 	private CoinInventory coinInventory;
+	private ExitManager exitManager;
+	private DungeonManager dungeonManager;
     private Coin coin;
 
 	private void Awake()
@@ -16,6 +18,8 @@ public class CoinUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 		battleManager = FindFirstObjectByType<BattleManager>();
 		Player player = FindFirstObjectByType<Player>();
 		cointosEffect = FindFirstObjectByType<CointosEffect>();
+		exitManager = FindFirstObjectByType<ExitManager>();
+		dungeonManager = FindFirstObjectByType<DungeonManager>();
 		coinInventory = player.CoinInventory;
 	}
 
@@ -38,10 +42,13 @@ public class CoinUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
+		if (dungeonManager.CurrentStage % 10 == 1)
+		{
+			exitManager.HideExit();
+		}
+		exitManager.HideExit();
 		cointosEffect.ResultFront();
 		int coinIndex = coinInventory.IndexOf(coin);
 		battleManager.ExecutePlayerCoinEffect(coinIndex);
 	}
-
-
 }
