@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class SidesServer : MonoBehaviour
 {
+    [SerializeField] private DropDisplays dropDisplays;
     [SerializeField] private List<BaseSide> sides;
     [SerializeField] private SideInventory sideInventory;
-
-    void Start()
-    {
-    }
 
     public BaseSide GetRandomSide(int currentStage)
     {
@@ -22,6 +19,7 @@ public class SidesServer : MonoBehaviour
         BaseSide newSide = Instantiate(side.gameObject, sideInventory.transform).GetComponent<BaseSide>();
         Logger.Log("Instantiated new side's place", newSide.transform.parent.name);
         newSide.Initialize(currentStage, true);
+        dropDisplays.CreateDropDisplays(newSide);
         return newSide;
     }
 

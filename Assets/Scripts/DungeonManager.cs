@@ -12,6 +12,7 @@ public class DungeonManager : MonoBehaviour
 	[SerializeField] private CallEnemiesManager callEnemiesManager;
 	[SerializeField] private DungeonConstructor dungeonConstructor;
 	[SerializeField] private float timeBetweenStages = 0.3f;
+	[SerializeField] private int dropSidesCount = 2;
 	private int currentStage = 1;
 	private Enemy enemy;
 	public int CurrentStage => currentStage;
@@ -44,7 +45,10 @@ public class DungeonManager : MonoBehaviour
 		Destroy(enemy.gameObject);
 		GameObject seSpeakerInstance = Instantiate(seSpeaker);
 		seSpeakerInstance.GetComponent<SESpeaker>().Play(victorySE);
-		sidesInventory.Add(sidesServer.GetRandomSide(currentStage));
+		for (int i = 0; i < dropSidesCount; i++)
+		{
+			sidesInventory.Add(sidesServer.GetRandomSide(currentStage));
+		}
 		Invoke(nameof(StartNextStage), timeBetweenStages);
 	}
 	private bool StartNextStage()
