@@ -15,14 +15,6 @@ public class SideRecordsManager : MonoBehaviour
     void Start()
     {
         Logger.Log("SideRecordsManager Start");
-        //TODO: Debug
-        for (int i = 0; i < 10; i++)
-        {
-            BaseSide newSide = Instantiate(sidesPanel.SidesServer.GetRandomSide(1), InventoryManager.Instance.SideInventory.transform).GetComponent<BaseSide>();
-            newSide.Initialize(1, true);
-            Logger.Log($"side: {newSide.EffectName}");
-            InventoryManager.Instance.SideInventory.Add(newSide);
-        }
         CreateAllRecords();
     }
 

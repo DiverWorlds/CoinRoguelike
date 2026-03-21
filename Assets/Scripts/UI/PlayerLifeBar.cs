@@ -4,20 +4,20 @@ using TMPro;
 
 public class PlayerLifeBar : MonoBehaviour
 {
-    [SerializeField] private Player player;
+    [SerializeField] private Character character;
     [SerializeField] private Slider slider;
     [SerializeField] private TextMeshProUGUI lifeText;
     private void Start()
     {
-        slider.maxValue = player.MaxLife;
-        slider.value = player.CurrentLife;
-        lifeText.text = $"{player.CurrentLife}/{player.MaxLife}";
+        slider.maxValue = character.MaxLife;
+        slider.value = character.CurrentLife;
+        lifeText.text = $"{character.CurrentLife}/{character.MaxLife}";
     }
 
     void Update()
     {
-        slider.value = player.CurrentLife;
-        lifeText.text = $"{player.CurrentLife}/{player.MaxLife}";
+        slider.value = character.CurrentLife;
+        lifeText.text = $"{character.CurrentLife}/{character.MaxLife}";
     }
 
 }
