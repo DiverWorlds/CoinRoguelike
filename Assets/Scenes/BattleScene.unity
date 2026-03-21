@@ -624,10 +624,7 @@ GameObject:
   - component: {fileID: 868224618}
   - component: {fileID: 868224617}
   - component: {fileID: 868224623}
-<<<<<<< HEAD
-=======
   - component: {fileID: 868224624}
->>>>>>> 9abb23cb63482f0cf747e6433ecc0134a69e6c94
   - component: {fileID: 868224625}
   m_Layer: 0
   m_Name: Player
@@ -761,33 +758,12 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d9ad2b5a76584c409cd5cafd7fd8b42, type: 3}
   m_Name: 
-<<<<<<< HEAD
-=======
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  player: {fileID: 868224623}
-  stageMoveDistance: 3
---- !u!114 &868224625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868224611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d9ad2b5a76584c409cd5cafd7fd8b42, type: 3}
-  m_Name: 
->>>>>>> 9abb23cb63482f0cf747e6433ecc0134a69e6c94
   m_EditorClassIdentifier: Assembly-CSharp::DungeonConstructor
   levelPrefab: {fileID: 2108341172135473776, guid: e0f2d495bb8884799b283a4aa49c703a, type: 3}
   currentLevel: {fileID: 0}
   pastLevel: {fileID: 0}
   firstLevel: {fileID: 0}
-<<<<<<< HEAD
-  firstPositionAjustment: {x: -0.5, y: 0, z: 0}
-=======
   firstPositionAjustment: {x: 0, y: 0, z: 10}
->>>>>>> 9abb23cb63482f0cf747e6433ecc0134a69e6c94
 --- !u!1 &1076728075
 GameObject:
   m_ObjectHideFlags: 0
