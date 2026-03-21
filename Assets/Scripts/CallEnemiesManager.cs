@@ -41,6 +41,7 @@ public class CallEnemiesManager : MonoBehaviour
         }
 
         Enemy enemy = Instantiate(enemyData.enemyPrefab);
+        EnemyParent.Instance.SetEnemy(enemy);
         Vector3 newPosition = player.position + new Vector3(0f, 0f, CalculateEnemySpawnOffset(stage)) + enemySpawnOffset; ;
         enemy.transform.position = newPosition;
         enemy.Initialize(stage);

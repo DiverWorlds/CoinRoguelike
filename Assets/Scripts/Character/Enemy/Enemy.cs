@@ -12,7 +12,7 @@ abstract public class Enemy : Character
     public EnemySkillData NextSkill => nextSkill;
     private int currentRank = 1;
     protected Animator animator;
-    private bool isAnimationPlaying;
+    private bool isAnimationPlaying = false;
     public bool IsAnimationPlaying => isAnimationPlaying;
 
     public void Initialize(int currentStage)

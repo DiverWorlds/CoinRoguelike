@@ -10,6 +10,9 @@ public class DungeonConstructor : MonoBehaviour
     [SerializeField] private GameObject pastLevel = null;
     [SerializeField] private GameObject firstLevel;
     [SerializeField] private Vector3 firstPositionAjustment = new Vector3(0f, 0f, 10f);
+    private bool isMoving;
+
+    public bool IsMoving => isMoving;
 
     // イージングの種類を定義
     public enum EasingType
@@ -32,6 +35,7 @@ public class DungeonConstructor : MonoBehaviour
     public void StartMoving(Vector3 startPos, Vector3 endPos, float duration, EasingType easing)
     {
         Logger.Log("startPos: " + startPos + ", endPos: " + endPos + ", duration: " + duration + ", easing: " + easing);
+        isMoving = true;
         StartCoroutine(MoveRoutine(startPos, endPos, duration, easing));
     }
 
@@ -58,6 +62,7 @@ public class DungeonConstructor : MonoBehaviour
         // 最後に確実に目的地へ配置
         transform.position = end;
         Destroy(pastLevel);
+        isMoving = false;
     }
 
     /// <summary>
