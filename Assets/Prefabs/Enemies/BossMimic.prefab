@@ -108,25 +108,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossMimic
   skillRanks:
   - skills:
-    - {fileID: 11400000, guid: 2e4fc70b6fa074320a6640313d62ba1d, type: 2}
-    - {fileID: 11400000, guid: 3593713cd02aa48018d630cffe5e3f4c, type: 2}
+    - {fileID: 11400000, guid: 0ccdff14d371a4bf2acff294f821bad7, type: 2}
+    - {fileID: 11400000, guid: ef74879db1bfb407896bf6bf00c36f3b, type: 2}
     - {fileID: 11400000, guid: 2b5ae50e3cdd9415a9ba8611672f56f2, type: 2}
   - skills:
-    - {fileID: 11400000, guid: 2e4fc70b6fa074320a6640313d62ba1d, type: 2}
-    - {fileID: 11400000, guid: 3593713cd02aa48018d630cffe5e3f4c, type: 2}
+    - {fileID: 11400000, guid: 0ccdff14d371a4bf2acff294f821bad7, type: 2}
+    - {fileID: 11400000, guid: ef74879db1bfb407896bf6bf00c36f3b, type: 2}
     - {fileID: 11400000, guid: 2b5ae50e3cdd9415a9ba8611672f56f2, type: 2}
   - skills:
-    - {fileID: 11400000, guid: 2e4fc70b6fa074320a6640313d62ba1d, type: 2}
-    - {fileID: 11400000, guid: 3593713cd02aa48018d630cffe5e3f4c, type: 2}
+    - {fileID: 11400000, guid: 0ccdff14d371a4bf2acff294f821bad7, type: 2}
+    - {fileID: 11400000, guid: ef74879db1bfb407896bf6bf00c36f3b, type: 2}
     - {fileID: 11400000, guid: 2b5ae50e3cdd9415a9ba8611672f56f2, type: 2}
   - skills:
-    - {fileID: 11400000, guid: 2e4fc70b6fa074320a6640313d62ba1d, type: 2}
-    - {fileID: 11400000, guid: 3593713cd02aa48018d630cffe5e3f4c, type: 2}
+    - {fileID: 11400000, guid: 0ccdff14d371a4bf2acff294f821bad7, type: 2}
+    - {fileID: 11400000, guid: ef74879db1bfb407896bf6bf00c36f3b, type: 2}
     - {fileID: 11400000, guid: 2b5ae50e3cdd9415a9ba8611672f56f2, type: 2}
   - skills:
-    - {fileID: 11400000, guid: 2e4fc70b6fa074320a6640313d62ba1d, type: 2}
+    - {fileID: 11400000, guid: ef74879db1bfb407896bf6bf00c36f3b, type: 2}
+    - {fileID: 11400000, guid: 2b5ae50e3cdd9415a9ba8611672f56f2, type: 2}
     - {fileID: 11400000, guid: 4326add9b43274a8ebedbbf3c8558084, type: 2}
-    - {fileID: 11400000, guid: 3593713cd02aa48018d630cffe5e3f4c, type: 2}
   maxLifesOnRank: 64000000c8000000900100002003000040060000
   currentSprite: {fileID: 21300000, guid: db595d72e5cd449c2934a1d20d9f1753, type: 3}
   spritesOnSituation:
@@ -164,11 +164,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_AnchorMax.x
@@ -188,11 +188,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 960
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 540
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_LocalPosition.x
@@ -204,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 59718.312
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_LocalRotation.w
@@ -224,11 +236,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 10099.137
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 14.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1068405611358686339, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -242,6 +254,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1152465948556056777, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
+    - target: {fileID: 1152465948556056777, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1691517965635286117, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
+    - target: {fileID: 1152465948556056777, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578069971043306091, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
+    - target: {fileID: 1578069971043306091, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1691517965635286117, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
+    - target: {fileID: 1578069971043306091, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1625433703593569107, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -250,6 +286,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1713709911536554507, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 1713709911536554507, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 3213648547329731490, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_Name
       value: EnemyCanvas

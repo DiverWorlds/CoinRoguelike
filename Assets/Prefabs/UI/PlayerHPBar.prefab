@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd82670d516d4db3bd1d0c319799e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLifeBar
-  player: {fileID: 0}
+  character: {fileID: 0}
   slider: {fileID: 7828406807002236589}
   lifeText: {fileID: 1850167097293334467}
 --- !u!1 &8409858872350172371
@@ -359,8 +359,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1000/1000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 00ef727e676c24059a39c547e25f2b2c, type: 2}
-  m_sharedMaterial: {fileID: 3155316296918209328, guid: 00ef727e676c24059a39c547e25f2b2c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
+  m_sharedMaterial: {fileID: 1691517965635286117, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

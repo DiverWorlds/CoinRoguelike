@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class CoinInventory : MonoBehaviour
 {
+    [SerializeField] private CoinSlotAssorter coinSlotAssorter;
     private Action<Coin> onCoinAdded;
     private Action<Coin> onCoinRemoved;
 
     //TODO: コインの種類で自動ソート機能を追加するかも
+    public CoinSlotAssorter CoinSlotAssorter => coinSlotAssorter;
     public const int MinCoinCount = 1;
     public const int MaxCoinCount = 3;
 
     private List<Coin> coins = new List<Coin>();
-    
+
     public event Action<Coin> OnCoinAdded
     {
         add => onCoinAdded += value;
@@ -71,5 +73,21 @@ public class CoinInventory : MonoBehaviour
         }
 
         return coins.IndexOf(coin);
+    }
+    public bool RemoveRandom()
+    {
+        if (coins.Count <= MinCoinCount)
+        {
+            return false;
+        }
+
+        int randomIndex = UnityEngine.Random.Range(0, coins.Count);
+        Coin coinToRemove = coins[randomIndex];
+        coins.RemoveAt(randomIndex);
+        Destroy(coinToRemove.gameObject);
+        onCoinRemoved?.Invoke(coinToRemove);
+        Logger.Log("onCoinRemoved invoked for coin: " + (coinToRemove != null ? $"{coinToRemove.FrontSideValue} / {coinToRemove.BackSideValue}" : "null") + ", isRemoved: true");
+
+        return true;
     }
 }

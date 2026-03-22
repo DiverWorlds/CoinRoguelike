@@ -4,22 +4,16 @@ using TMPro;
 public class CoinDescriptionWindow : MonoBehaviour
 {
     [SerializeField] private GameObject background;
-    [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private CoinDetail coinDetail;
 
-    public void Set(string frontEffectName, string backEffectName, int frontSideValue, int backSideValue, float frontSideProbability)
+    public void Set(Coin coin)
     {
-        descriptionText.text = GetDescriptionText(frontEffectName, backEffectName, frontSideValue, backSideValue, frontSideProbability);
         background.SetActive(true);
+        coinDetail.Coin = coin;
     }
     public void Hide()
     {
         background.SetActive(false);
     }
 
-    private string GetDescriptionText(string frontEffectName, string backEffectName, int frontSideValue, int backSideValue, float frontSideProbability)
-    {
-        return $"コウカ　　{frontEffectName} / {backEffectName}\n" +
-               $"マリョク　{frontSideValue} / {backSideValue} \n" +
-               $"カクリツ　{frontSideProbability * 100} / {(1-frontSideProbability) * 100} %";
-    }
 }

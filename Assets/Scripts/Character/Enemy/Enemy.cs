@@ -65,7 +65,10 @@ abstract public class Enemy : Character
 
     protected void DestroyCoin(Character target)
     {
-        //コイン破壊処理
+        CoinInventory coinInventory = InventoryManager.Instance.CoinInventory;
+        if (coinInventory.CoinCount == 0) return;
+        int coinIndex = UnityEngine.Random.Range(0, coinInventory.CoinCount);
+        coinInventory.RemoveRandom();
     }
 
     //Animationから呼ばれる

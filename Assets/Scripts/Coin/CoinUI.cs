@@ -31,7 +31,7 @@ public class CoinUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 	{
 		if (coinDescriptionWindow != null && coin != null)
 		{
-			coinDescriptionWindow.Set(coin.FrontEffectName, coin.BackEffectName, coin.FrontSideValue, coin.BackSideValue, coin.FrontSideProbability);
+			coinDescriptionWindow.Set(coin);
 		}
 	}
 

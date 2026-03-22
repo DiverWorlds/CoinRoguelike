@@ -7,9 +7,6 @@ public class CoinFactory : MonoBehaviour
 	[SerializeField] private Coin coinPrefab;
 	[SerializeField] private SideInventory sideInventory;
 	[SerializeField] private CoinInventory coinInventory;
-	[SerializeField] private Transform coin1Slot;
-	[SerializeField] private Transform coin2Slot;
-	[SerializeField] private Transform coin3Slot;
 	[SerializeField] private Transform previewSlot;
 	[SerializeField] private List<SideRecord> previewedRecords = new List<SideRecord>();
 	[SerializeField] private float BonusMagnification = 3;
@@ -58,17 +55,7 @@ public class CoinFactory : MonoBehaviour
 			return;
 		}
 
-		int targetIndex = coinInventory.CoinCount;
-		Transform parentSlot = GetSlotByIndex(targetIndex);
-		if (parentSlot == null)
-		{
-			Debug.LogWarning($"Coin slot is not assigned for index {targetIndex}. Coin move was skipped.");
-			return;
-		}
-
-		coin.transform.SetParent(parentSlot, false);
-		coin.transform.localPosition = Vector3.zero;
-		coin.transform.localRotation = Quaternion.identity;
+		coinInventory.CoinSlotAssorter.AssignToEmptySlot(coin.transform);
 
 		for (int i = previewedRecords.Count - 1; i >= 0; i--)
 		{
@@ -84,15 +71,9 @@ public class CoinFactory : MonoBehaviour
 	}
 	public Coin CreateCoin(BaseSide side1, BaseSide side2)
 	{
-		int targetIndex = coinInventory.CoinCount;
-		Transform parentSlot = GetSlotByIndex(targetIndex);
-		if (parentSlot == null)
-		{
-			Debug.LogWarning($"Coin slot is not assigned for index {targetIndex}. Coin creation was skipped.");
-			return null;
-		}
-
-		return CreateCoinBase(side1, side2, parentSlot, true);
+		Coin newCoin = CreateCoinBase(side1, side2, transform, true);
+		coinInventory.CoinSlotAssorter.AssignToEmptySlot(newCoin.transform);
+		return newCoin;
 	}
 	private Coin CreateCoinBase(BaseSide side1, BaseSide side2, Transform parent, bool addToInventory)
 	{
@@ -136,21 +117,6 @@ public class CoinFactory : MonoBehaviour
 		sideInventory.Remove(side1);
 		sideInventory.Remove(side2);
 		return CreateCoin(side1, side2);
-	}
-
-	private Transform GetSlotByIndex(int index)
-	{
-		switch (index)
-		{
-			case 0:
-				return coin1Slot;
-			case 1:
-				return coin2Slot;
-			case 2:
-				return coin3Slot;
-			default:
-				return null;
-		}
 	}
 
 	private float CalcFrontSideProbability(BaseSide frontSide, BaseSide backSide)

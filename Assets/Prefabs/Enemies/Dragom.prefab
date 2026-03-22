@@ -130,8 +130,8 @@ MonoBehaviour:
   maxLifesOnRank: 64000000c8000000900100002003000040060000
   currentSprite: {fileID: 0}
   spritesOnSituation:
-  - {fileID: 21300000, guid: db595d72e5cd449c2934a1d20d9f1753, type: 3}
-  - {fileID: 21300000, guid: 1c30601eca62c4366a7bc8eb8a22bca7, type: 3}
+  - {fileID: 21300000, guid: cf1e7ac120ff64417bfee4a5b3e26fec, type: 3}
+  - {fileID: 21300000, guid: cf1e7ac120ff64417bfee4a5b3e26fec, type: 3}
 --- !u!95 &7442993555696053818
 Animator:
   serializedVersion: 7
@@ -142,7 +142,7 @@ Animator:
   m_GameObject: {fileID: 6807342883119147140}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b21529e6fa8444e468fa410d43d8f9a6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 56e31ff937ba14193bad536d87b06f49, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -254,6 +254,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1152465948556056777, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
+    - target: {fileID: 1152465948556056777, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1691517965635286117, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
+    - target: {fileID: 1152465948556056777, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578069971043306091, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
+    - target: {fileID: 1578069971043306091, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1691517965635286117, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
+    - target: {fileID: 1578069971043306091, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1625433703593569107, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -262,6 +286,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1713709911536554507, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 1713709911536554507, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 3213648547329731490, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_Name
       value: EnemyCanvas

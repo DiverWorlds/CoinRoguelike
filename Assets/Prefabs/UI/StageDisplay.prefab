@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 01
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 342f462de99b14add994107e2a641960, type: 2}
-  m_sharedMaterial: {fileID: 1691517965635286117, guid: 342f462de99b14add994107e2a641960, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
+  m_sharedMaterial: {fileID: 1691517965635286117, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -256,8 +256,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "FLOOR\uFF1A"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 342f462de99b14add994107e2a641960, type: 2}
-  m_sharedMaterial: {fileID: 1691517965635286117, guid: 342f462de99b14add994107e2a641960, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
+  m_sharedMaterial: {fileID: 1691517965635286117, guid: 4552f1ad643b543b2a1ba786725a4a64, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
