@@ -2224,7 +2224,7 @@ MonoBehaviour:
   coin1Slot: {fileID: 1793152063}
   coin2Slot: {fileID: 1924197260}
   coin3Slot: {fileID: 466616345}
-  previewSlot: {fileID: 0}
+  previewSlot: {fileID: 2294537242425810751}
   previewedRecords: []
   BonusMagnification: 3
 --- !u!224 &1878710849 stripped
@@ -2735,6 +2735,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+--- !u!224 &2294537242425810751 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1552303754209342354, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+  m_PrefabInstance: {fileID: 2294537242425810750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6975376224063564306
 PrefabInstance:
   m_ObjectHideFlags: 0
