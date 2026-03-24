@@ -9,6 +9,7 @@ public class CoinCraftButton : MonoBehaviour
     [SerializeField] private Sprite disableSprite;
     [SerializeField] private CoinDetail coinDetail;
     [SerializeField] private CoinFactory coinFactory;
+    [SerializeField] private Cutin cutin;
 
     void Start()
     {
@@ -29,5 +30,6 @@ public class CoinCraftButton : MonoBehaviour
     
         coinFactory.MoveToSlot(coinDetail.Coin);
         coinDetail.Coin = null;
+        cutin.ShowCutin();
     }
 }
