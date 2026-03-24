@@ -12,9 +12,7 @@ public class CallEnemiesManager : MonoBehaviour
     }
 	[SerializeField] private List<EnemyPrefabData> enemyPrefabs = new List<EnemyPrefabData>();
     [SerializeField] private Transform player;
-    [SerializeField] private float enemyOffset = 20f;
-    [SerializeField] private float initialEnemyOffset = 2f;
-    [SerializeField] private Vector3 enemySpawnOffset;
+    [SerializeField] private Vector3 enemySpawnOffset = new Vector3(0f, 0f, 18f);
 
     public Enemy InstantiateEnemyPrefab(int stage)
     {
@@ -42,14 +40,18 @@ public class CallEnemiesManager : MonoBehaviour
 
         Enemy enemy = Instantiate(enemyData.enemyPrefab);
         EnemyParent.Instance.SetEnemy(enemy);
-        Vector3 newPosition = player.position + new Vector3(0f, 0f, CalculateEnemySpawnOffset(stage)) + enemySpawnOffset; ;
+        Vector3 newPosition = player.position + GetEnemySpawn(stage);
         enemy.transform.position = newPosition;
         enemy.Initialize(stage);
         return enemy;
     }
 
-    private float CalculateEnemySpawnOffset(int stage)
+    private Vector3 GetEnemySpawn(int stage)
     {
-        return stage == 1 ? initialEnemyOffset : enemyOffset;
+        if (stage == 1)
+        {
+            return new Vector3(enemySpawnOffset.x, enemySpawnOffset.y, 0f);
+        }
+        return enemySpawnOffset;
     }
 }

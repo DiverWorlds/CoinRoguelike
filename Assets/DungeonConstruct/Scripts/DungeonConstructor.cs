@@ -9,7 +9,7 @@ public class DungeonConstructor : MonoBehaviour
     [SerializeField] private GameObject currentLevel;
     [SerializeField] private GameObject pastLevel = null;
     [SerializeField] private GameObject firstLevel;
-    [SerializeField] private Vector3 firstPositionAjustment = new Vector3(0f, 0f, 10f);
+    [SerializeField] private Vector3 firstPositionAjustment = new Vector3(0f, 0f, -5f);
     private bool isMoving;
 
     public bool IsMoving => isMoving;

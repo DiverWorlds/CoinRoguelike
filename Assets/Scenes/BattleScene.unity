@@ -920,7 +920,7 @@ Transform:
   m_GameObject: {fileID: 868224611}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.39, y: -1.66, z: -151.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -962,7 +962,7 @@ MonoBehaviour:
   currentLevel: {fileID: 0}
   pastLevel: {fileID: 0}
   firstLevel: {fileID: 0}
-  firstPositionAjustment: {x: 0, y: 1, z: 10}
+  firstPositionAjustment: {x: 0, y: 1, z: -5}
 --- !u!1 &1076728075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,7 +1124,7 @@ Transform:
   m_GameObject: {fileID: 1285007340}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.02283, y: -3.20032, z: -143.67052}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2066,9 +2066,7 @@ MonoBehaviour:
   - enemyName: 3
     enemyPrefab: {fileID: -8780793025535394973, guid: 2b6b88953bab84f50915404814fbae4b, type: 3}
   player: {fileID: 868224620}
-  enemyOffset: 13
-  initialEnemyOffset: 2
-  enemySpawnOffset: {x: 0, y: 0.8, z: 0}
+  enemySpawnOffset: {x: 0, y: 0.8, z: 2}
 --- !u!1 &1860301688
 GameObject:
   m_ObjectHideFlags: 0
