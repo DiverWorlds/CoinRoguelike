@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d1e91e6f03a9401a9dd6af2eb3980a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SleepSide
-  baseStrengthOnRank: 0200000002000000020000000200000003000000
+  baseStrengthOnRank: 0300000003000000030000000300000004000000
   baseWeightOnRank: 0700000006000000050000000400000004000000
