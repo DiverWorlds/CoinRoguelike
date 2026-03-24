@@ -963,6 +963,7 @@ MonoBehaviour:
   pastLevel: {fileID: 0}
   firstLevel: {fileID: 0}
   firstPositionAjustment: {x: 0, y: 1, z: -5}
+  moveDistance: 10
 --- !u!1 &1076728075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2066,6 +2067,7 @@ MonoBehaviour:
   - enemyName: 3
     enemyPrefab: {fileID: -8780793025535394973, guid: 2b6b88953bab84f50915404814fbae4b, type: 3}
   player: {fileID: 868224620}
+  dungeonConstructor: {fileID: 868224625}
   enemySpawnOffset: {x: 0, y: 0.8, z: 2}
 --- !u!1 &1860301688
 GameObject:

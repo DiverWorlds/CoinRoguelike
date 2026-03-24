@@ -10,9 +10,11 @@ public class DungeonConstructor : MonoBehaviour
     [SerializeField] private GameObject pastLevel = null;
     [SerializeField] private GameObject firstLevel;
     [SerializeField] private Vector3 firstPositionAjustment = new Vector3(0f, 0f, -5f);
+    [SerializeField] private float moveDistance = 10f;
     private bool isMoving;
 
     public bool IsMoving => isMoving;
+    public float MoveDistance => moveDistance;
 
     // イージングの種類を定義
     public enum EasingType
@@ -113,6 +115,7 @@ public class DungeonConstructor : MonoBehaviour
         if (firstLevel) Destroy(firstLevel);
         ConstructDungeon();
         Vector3 nextPoint = new Vector3(transform.position.x, transform.position.y, currentLevel.transform.position.z + 5f);
+        moveDistance = Mathf.Abs(nextPoint.z - transform.position.z);
         StartMoving(transform.position, nextPoint, 2.0f, EasingType.EaseInOutQuad);
     }
 

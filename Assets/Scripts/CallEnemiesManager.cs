@@ -12,7 +12,8 @@ public class CallEnemiesManager : MonoBehaviour
     }
 	[SerializeField] private List<EnemyPrefabData> enemyPrefabs = new List<EnemyPrefabData>();
     [SerializeField] private Transform player;
-    [SerializeField] private Vector3 enemySpawnOffset = new Vector3(0f, 0f, 18f);
+    [SerializeField] private DungeonConstructor dungeonConstructor;
+    [SerializeField] private Vector3 enemySpawnOffset = new Vector3(0f, 0f, 2f);
 
     public Enemy InstantiateEnemyPrefab(int stage)
     {
@@ -50,8 +51,9 @@ public class CallEnemiesManager : MonoBehaviour
     {
         if (stage == 1)
         {
-            return new Vector3(enemySpawnOffset.x, enemySpawnOffset.y, 0f);
+            return enemySpawnOffset;
         }
-        return enemySpawnOffset;
+
+        return new Vector3(enemySpawnOffset.x, enemySpawnOffset.y, enemySpawnOffset.z + dungeonConstructor.MoveDistance);
     }
 }
