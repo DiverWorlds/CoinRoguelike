@@ -287,17 +287,25 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1713709911536554507, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 1713709911536554507, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 3213648547329731490, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750538887246770598, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 116.7228
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750538887246770598, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5429602349956426636, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 109.9324
+      objectReference: {fileID: 0}
+    - target: {fileID: 5429602349956426636, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7734418641009164874, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: enemy
