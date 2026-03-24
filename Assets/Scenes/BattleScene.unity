@@ -964,6 +964,7 @@ MonoBehaviour:
   firstLevel: {fileID: 0}
   firstPositionAjustment: {x: 0, y: 1.69, z: -5}
   moveDistance: 10
+  moveDuration: 1
 --- !u!1 &1076728075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,7 +2013,6 @@ MonoBehaviour:
   dungeonConstructor: {fileID: 868224625}
   exitManager: {fileID: 447241303}
   allowClearStage: 50
-  timeBetweenStages: 0.2
   dropSidesCount: 2
   seSpeaker: {fileID: 659056857859430532, guid: 149d965359e8c46e4b69ab3bda713fda, type: 3}
   victorySE: {fileID: 8300000, guid: 91db41294c4c14fe29474bc728fae22d, type: 3}
