@@ -8,6 +8,7 @@ abstract public class Enemy : Character
 {
     [SerializeField] protected SkillsOnRank[] skillRanks = new SkillsOnRank[5];
     [SerializeField] protected int[] maxLifesOnRank = new int[5];
+    [SerializeField] private SpriteRenderer sleepIcon;
     private EnemySkillData nextSkill;
     public EnemySkillData NextSkill => nextSkill;
     private int currentRank = 1;
@@ -24,6 +25,7 @@ abstract public class Enemy : Character
         //敵のHPに若干のブレを加える。ブレの幅は最大HPの5%ほどにする。
         MaxLife = maxLifesOnRank[currentRank - 1] + UnityEngine.Random.Range(-maxLifesOnRank[currentRank - 1] / 20, maxLifesOnRank[currentRank - 1] / 20);
         animator = GetComponent<Animator>();
+        UpdateSleepIcon();
         SetNextSkill();
         Logger.Log("currentStage" + currentStage + " currentRank" + currentRank);
     }
@@ -46,6 +48,21 @@ abstract public class Enemy : Character
             return;
         }
         UseSkill(player, nextSkill);
+    }
+
+    protected override void OnSleepCounterChanged()
+    {
+        UpdateSleepIcon();
+    }
+
+    private void UpdateSleepIcon()
+    {
+        if (sleepIcon == null)
+        {
+            return;
+        }
+
+        sleepIcon.enabled = SleepCounter > 0 && CurrentLife > 0;
     }
     protected void UseSkill(Character target, EnemySkillData skillData)
     {

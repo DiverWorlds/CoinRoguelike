@@ -15,6 +15,7 @@ abstract public class Character : MonoBehaviour
         set
         {
             sleepCounter = Mathf.Max(0, value);
+            OnSleepCounterChanged();
         }
     }
     public int MaxLife
@@ -60,5 +61,9 @@ abstract public class Character : MonoBehaviour
     public void TakeHeal(int amount)
     {
         Heal(amount);
+    }
+
+    protected virtual void OnSleepCounterChanged()
+    {
     }
 }

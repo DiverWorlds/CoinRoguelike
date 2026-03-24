@@ -2786,6 +2786,10 @@ PrefabInstance:
       propertyPath: sidesServer
       value: 
       objectReference: {fileID: 1309242924}
+    - target: {fileID: 4345127687491727329, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4854430839530927522, guid: f4a2adb0f4db649379329429853c9fc5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
