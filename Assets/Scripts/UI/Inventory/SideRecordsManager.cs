@@ -18,6 +18,15 @@ public class SideRecordsManager : MonoBehaviour
         Logger.Log("SideRecordsManager Start");
         CreateAllRecords();
         InventoryManager.Instance.SideInventory.OnSideAdded += CreateRecord;
+        InventoryManager.Instance.SideInventory.OnSideRemoved += RemoveRecord;
+    }
+
+    private void OnDestroy()
+    {
+        if (InventoryManager.Instance == null) return;
+
+        InventoryManager.Instance.SideInventory.OnSideAdded -= CreateRecord;
+        InventoryManager.Instance.SideInventory.OnSideRemoved -= RemoveRecord;
     }
 
     //TODO: 呼ぶ。Removeも
@@ -110,6 +119,14 @@ public class SideRecordsManager : MonoBehaviour
             records.Remove(record);
             Destroy(record.gameObject);
         }
+    }
+    public void RemoveRecord(BaseSide side)
+    {
+        if (side == null) return;
+
+        SideRecord record = records.FirstOrDefault(r => r != null && r.Side == side);
+        if (record == null) return;
+        RemoveRecord(record);
     }
     public void RemoveAllRecords()
     {

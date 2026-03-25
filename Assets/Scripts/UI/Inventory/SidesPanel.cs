@@ -26,6 +26,8 @@ public class SidesPanel : MonoBehaviour
     {
         Logger.Log($"AddSelectedRecord: {record.Side.EffectName}");
 
+        selectedRecords.RemoveAll(r => r == null || r.Side == null);
+
         var sameSideRecord = selectedRecords.FirstOrDefault(r => r.Side.FrontOrBack == record.Side.FrontOrBack);
         if (sameSideRecord != null)
         {

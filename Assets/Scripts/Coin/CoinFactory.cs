@@ -38,6 +38,7 @@ public class CoinFactory : MonoBehaviour
 				}
 			}
 		}
+		previewedRecords.Clear();
 		previewedRecords.Add(frontSideRecord);
 		previewedRecords.Add(backSideRecord);
 
@@ -56,6 +57,15 @@ public class CoinFactory : MonoBehaviour
 		}
 
 		coinInventory.CoinSlotAssorter.AssignToEmptySlot(coin.transform);
+
+		for (int i = previewedRecords.Count - 1; i >= 0; i--)
+		{
+			SideRecord record = previewedRecords[i];
+			if (record != null && record.Side != null)
+			{
+				sideInventory.Remove(record.Side);
+			}
+		}
 
 		for (int i = previewedRecords.Count - 1; i >= 0; i--)
 		{
