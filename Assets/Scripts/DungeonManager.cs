@@ -43,6 +43,7 @@ public class DungeonManager : MonoBehaviour
 	public void OnBattleWon()
 	{
 		Logger.Log("OnBattleWon called");
+		ScoreManager.Instance.UpdateScores(CurrentStage);
 		aluFaceChanger?.OnEnemyDefeated();
 		player.RecoverLife();
 		Destroy(enemy.gameObject);

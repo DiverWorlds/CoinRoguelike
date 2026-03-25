@@ -22,7 +22,6 @@ public class ExitManager : MonoBehaviour
     }
     private void OnExitButtonClicked()
     {
-        ScoreManager.Instance.UpdateScores(dungeonManager.CurrentStage);
         SceneManager.LoadScene("GameClear");
     }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
@@ -69,8 +70,7 @@ public class BattleManager : MonoBehaviour
 
     private void EndGame()
     {
-        Time.timeScale = 0f;
-        Debug.Log("Game Over");
+        SceneManager.LoadScene("GameOver");
     }
     private bool IsPlayerTurn()
     {
