@@ -12,6 +12,7 @@ public class DungeonManager : MonoBehaviour
 	[SerializeField] private CallEnemiesManager callEnemiesManager;
 	[SerializeField] private DungeonConstructor dungeonConstructor;
 	[SerializeField] private ExitManager exitManager;
+	[SerializeField] private AluFaceChanger aluFaceChanger;
 	[SerializeField] private int allowClearStage = 50;
 	[SerializeField] private int dropSidesCount = 2;
 	private int currentStage = 1;
@@ -42,6 +43,7 @@ public class DungeonManager : MonoBehaviour
 	public void OnBattleWon()
 	{
 		Logger.Log("OnBattleWon called");
+		aluFaceChanger?.OnEnemyDefeated();
 		player.RecoverLife();
 		Destroy(enemy.gameObject);
 		GameObject seSpeakerInstance = Instantiate(seSpeaker);
