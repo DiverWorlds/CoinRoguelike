@@ -3133,7 +3133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8417957078240970570, guid: f9668733c2c8e4d5f82ca7911d8d2f3b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 375.8767
+      value: -375.8767
       objectReference: {fileID: 0}
     - target: {fileID: 8417957078240970570, guid: f9668733c2c8e4d5f82ca7911d8d2f3b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3152,7 +3152,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8508294951663657958, guid: f9668733c2c8e4d5f82ca7911d8d2f3b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9668733c2c8e4d5f82ca7911d8d2f3b, type: 3}
