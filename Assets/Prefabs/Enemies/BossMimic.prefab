@@ -363,6 +363,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 201
       objectReference: {fileID: 0}
+    - target: {fileID: 1291289564549837967, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291289564549837967, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291289564549837967, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 540
+      objectReference: {fileID: 0}
     - target: {fileID: 1578069971043306091, guid: fd265e3cf36654050bfbcfefc706b818, type: 3}
       propertyPath: m_fontAsset
       value: 
